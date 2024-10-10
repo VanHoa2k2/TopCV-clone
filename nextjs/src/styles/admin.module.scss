@@ -1,0 +1,18 @@
+.upsert-job-container {
+  background-color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  min-height: 100vh;
+  height: auto;
+
+  .title {
+    padding: 10px 0 20px 0;
+  }
+
+  .set-height-proFormItem {
+    height: 380px;
+    .set-height-quill {
+      height: 300px;
+    }
+  }
+}
