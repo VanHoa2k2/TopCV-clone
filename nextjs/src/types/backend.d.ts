@@ -154,8 +154,8 @@ export interface IJob {
   company?: {
     id: number;
     name: string;
-    employeeSize: string;
-    address: string;
+    employeeSize?: string;
+    address?: string;
     logo?: string;
   };
   location: string;

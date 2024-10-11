@@ -31,6 +31,7 @@ const ContentRight = () => {
   const [dataAvatar, setDataAvatar] = useState<IAvatar[]>([]);
   const [loadingUpload, setLoadingUpload] = useState<boolean>(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [loadingUpdate, setLoadingUpdate] = useState<boolean>(false);
   const user = useAppSelector((state) => state?.account?.user);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -91,6 +92,7 @@ const ContentRight = () => {
   };
 
   const fetchUpdateUser = async () => {
+    setLoadingUpdate(true);
     const data = await userApiRequest.callUpdateUser({
       id: user?.id ?? 0,
       name: user?.name,
@@ -121,6 +123,8 @@ const ContentRight = () => {
         message: "Lỗi tải lên",
         description: "Đã xảy ra lỗi khi tải lên ảnh đại diện",
       });
+    } finally {
+      setLoadingUpdate(false);
     }
   };
 
@@ -241,9 +245,14 @@ const ContentRight = () => {
                           <div>
                             <button
                               onClick={() => fetchUpdateUser()}
-                              className="inline-block text-white py-[5px] px-[5px] cursor-pointer mt-[3px] rounded-[3px] border-none w-[160px] text-[1.2em] leading-[1.5em] bg-[#1f8c67]"
+                              className={`inline-block text-white py-[5px] px-[5px] cursor-pointer mt-[3px] rounded-[3px] border-none w-[160px] text-[1.2em] leading-[1.5em] bg-[#1f8c67] ${
+                                loadingUpdate
+                                  ? "opacity-50 cursor-not-allowed"
+                                  : ""
+                              }`}
+                              disabled={loadingUpdate}
                             >
-                              Xong
+                              {loadingUpdate ? "Đang tải..." : "Xong"}
                             </button>
                           </div>
                           <div

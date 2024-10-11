@@ -80,7 +80,7 @@ const ViewUpsertJob = (props: any) => {
     const init = async () => {
       if (id) {
         const res = await jobApiRequest.callFetchJobById(id);
-        console.log(res);
+
         if (res && res.data) {
           let startSalary = 0;
           let endSalary = 0;
@@ -156,30 +156,30 @@ const ViewUpsertJob = (props: any) => {
     if (dataUpdate?.id) {
       //update
       const cp = values?.company?.value?.split("@#$");
-      const job = {
-        name: values.name,
-        skills: values.skills,
-        occupations: values.occupations,
+      const job: IJob = {
+        name: values?.name,
+        skills: values?.skills,
+        occupations: values?.occupations,
         company: {
           id: cp && cp.length > 0 ? cp[0] : "",
-          name: values.company.label,
+          name: values?.company.label,
           logo: cp && cp.length > 1 ? cp[1] : "",
         },
-        location: values.location,
+        location: values?.location,
         salary: salary,
-        quantity: values.quantity,
-        employmentType: values.employmentType,
-        genderReq: values.genderReq,
-        level: values.level,
-        experience: values.experience,
+        quantity: values?.quantity,
+        employmentType: values?.employmentType,
+        genderReq: values?.genderReq,
+        level: values?.level,
+        experience: values?.experience,
         description: description,
-        startDate: /[0-9]{2}[/][0-9]{2}[/][0-9]{4}$/.test(values.startDate)
-          ? dayjs(values.startDate, "DD/MM/YYYY").toDate()
-          : values.startDate,
-        endDate: /[0-9]{2}[/][0-9]{2}[/][0-9]{4}$/.test(values.endDate)
-          ? dayjs(values.endDate, "DD/MM/YYYY").toDate()
-          : values.endDate,
-        isActive: values.isActive,
+        startDate: /[0-9]{2}[/][0-9]{2}[/][0-9]{4}$/.test(values?.startDate)
+          ? dayjs(values?.startDate, "DD/MM/YYYY").toDate()
+          : values?.startDate,
+        endDate: /[0-9]{2}[/][0-9]{2}[/][0-9]{4}$/.test(values?.endDate)
+          ? dayjs(values?.endDate, "DD/MM/YYYY").toDate()
+          : values?.endDate,
+        isActive: values?.isActive,
       };
 
       const res = await jobApiRequest.callUpdateJob(job, dataUpdate.id);

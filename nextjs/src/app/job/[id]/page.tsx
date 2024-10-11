@@ -21,6 +21,7 @@ import BtnApplyJob from "./_components/BtnApplyJob";
 import { Metadata } from "next";
 import { cache } from "react";
 import { baseOpenGraph } from "@/lib/shared-metadata";
+import SkeletonJobDetail from "./_components/SkeletonJobDetail";
 dayjs.extend(relativeTime);
 
 const callFetchJobById = cache(jobApiRequest.callFetchJobById);
@@ -52,6 +53,10 @@ const JobDetailPage = async ({ params }: IProps) => {
 
   const res = await callFetchJobById(id);
   const jobDetail = res.data;
+
+  if (!jobDetail) {
+    return <SkeletonJobDetail />;
+  }
 
   const skillJob = jobDetail?.skills ?? [];
 
@@ -223,7 +228,7 @@ const JobDetailPage = async ({ params }: IProps) => {
                 <div className="flex gap-4 mb-2">
                   <div className="flex items-center text-[#7f878f] text-[14px] gap-2 tracking-[.14px] leading-[22px] w-[88px]">
                     <FaLocationDot />
-                    Đại điểm
+                    Địa điểm
                   </div>
                   <div
                     className="text-[#212f3f] text-[14px] leading-[22px] tracking-[.14px] font-medium overflow-hidden text-ellipsis [-webkit-line-clamp:2] [-webkit-box-orient:vertical]"

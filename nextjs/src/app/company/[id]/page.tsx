@@ -10,6 +10,7 @@ import ImageCoverDefault from "@/assets/images/company_cover_1.webp";
 import CompanyDetailDesc from "./_components/CompanyDetailDesc";
 import { Metadata } from "next";
 import { baseOpenGraph } from "@/lib/shared-metadata";
+import SkeletonCompanyDetail from "./_components/SkeletonCompanyDetail";
 
 const callFetchCompanyById = cache(companyApiRequest.callFetchCompanyById);
 
@@ -42,9 +43,12 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 
 const CompanyDetailPage = async ({ params }: IProps) => {
   const id = params?.id; // company id
-
   const res = await callFetchCompanyById(id);
   const companyDetail = res.data;
+
+  if (!companyDetail) {
+    return <SkeletonCompanyDetail />;
+  }
 
   return (
     <div className="bg-[#f4f5f5] pb-10">
@@ -80,7 +84,7 @@ const CompanyDetailPage = async ({ params }: IProps) => {
           </div>
 
           <div className="relative">
-            <div className="flex items-center justify-center bg-white border-[4.5px] boder-solid border-white rounded-[99px] h-[180px] w-[180px] overflow-hidden absolute top-[-90px] left-10">
+            <div className="flex items-center justify-center bg-white border-[4.5px] border-solid border-white rounded-[99px] h-[180px] w-[180px] overflow-hidden absolute top-[-90px] left-10">
               <Image
                 src={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/company/${companyDetail?.logo}`}
                 alt={`${companyDetail?.name}`}

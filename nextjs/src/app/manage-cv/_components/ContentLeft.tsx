@@ -24,6 +24,7 @@ import BannerUpload from "@/assets/images/banner_upload.webp";
 
 const ContentLeft = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false); // Thêm state loading
   const user = useAppSelector((state) => state?.account?.user);
   const router = useRouter();
   const [isOpenTooltip, setIsOpenTooltip] = useState<boolean>(false);
@@ -31,6 +32,7 @@ const ContentLeft = () => {
   const text = <span>Chức năng chưa được phát triễn</span>;
 
   const fetchUpdateUserCV = async () => {
+    setLoading(true); // Bắt đầu loading
     const data = await userApiRequest.callUpdateCVByUser("");
 
     try {
@@ -50,6 +52,8 @@ const ContentLeft = () => {
         message: "Lỗi xóa cv",
         description: "Đã xảy ra lỗi khi xóa cv",
       });
+    } finally {
+      setLoading(false); // Kết thúc loading
     }
   };
 
@@ -115,8 +119,10 @@ const ContentLeft = () => {
                 <button
                   onClick={fetchUpdateUserCV}
                   className="ml-2 text-red-500 hover:text-red-700 transition-colors duration-200"
+                  disabled={loading} // Vô hiệu hóa nút khi đang loading
                 >
-                  <FaRegTrashCan />
+                  {loading ? <span>Loading...</span> : <FaRegTrashCan />}{" "}
+                  {/* Hiển thị loading */}
                 </button>
               </h3>
               <div className="flex flex-col space-y-2">

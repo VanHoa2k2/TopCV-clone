@@ -30,6 +30,7 @@ const ModalUploadCV = (props: IProps) => {
   const user = useAppSelector((state) => state?.account?.user);
   const [dataCV, setDataCV] = useState<ICV[]>([]);
   const [loadingUpload, setLoadingUpload] = useState<boolean>(false);
+  const [loadingUpdate, setLoadingUpdate] = useState<boolean>(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -45,7 +46,6 @@ const ModalUploadCV = (props: IProps) => {
           file,
           "resume"
         );
-        console.log(resFile);
         if (resFile && resFile.data) {
           const urlCV = resFile.data.fileName;
           setDataCV([
@@ -75,8 +75,8 @@ const ModalUploadCV = (props: IProps) => {
   };
 
   const fetchUpdateUserCV = async () => {
+    setLoadingUpdate(true);
     const data = await userApiRequest.callUpdateCVByUser(dataCV[0]?.name);
-    console.log(data);
 
     try {
       if (data.statusCode === 200) {
@@ -98,8 +98,11 @@ const ModalUploadCV = (props: IProps) => {
         message: "Lỗi tải lên",
         description: "Đã xảy ra lỗi khi tải lên cv",
       });
+    } finally {
+      setLoadingUpdate(false);
     }
   };
+
   return (
     <div className="bg-white rounded-md shadow-[-1px_1px_6px_rgba(0,0,0,0.05)] max-h-[500px] overflow-y-auto">
       <div className="py-6 px-8">
@@ -157,9 +160,20 @@ const ModalUploadCV = (props: IProps) => {
           <button
             className="bg-[#00b14f] text-white text-[14px] font-semibold h-[40px] tracking-[0.175px] leading-[22px] px-4 w-[125px]"
             onClick={() => fetchUpdateUserCV()}
+            disabled={loadingUpload || loadingUpdate}
           >
             Tải CV lên
           </button>
+          {loadingUpload && (
+            <div className="mt-2">
+              <span>Đang tải lên...</span>
+            </div>
+          )}
+          {loadingUpdate && (
+            <div className="mt-2">
+              <span>Đang tải lên CV...</span>
+            </div>
+          )}
         </div>
 
         <div className="grid gap-5 grid-cols-2 my-6">

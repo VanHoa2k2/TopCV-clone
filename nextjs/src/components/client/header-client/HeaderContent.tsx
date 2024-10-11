@@ -264,7 +264,7 @@ const HeaderContent = () => {
                   onMouseLeave={() => {}}
                 />
                 {notifiesBadge?.length > 0 && (
-                  <span className="absolute top-[-32%] right-[-40%] w-[18px] h-[18px] bg-[#f4eaea] opacity-80 text-[#393838] rounded-full flex items-center justify-center text-[12px] font-semibold z-10">
+                  <span className="absolute top-[-16%] right-[-18%] w-[22px] h-[22px] bg-[#f4eaea] opacity-80 text-[#393838] rounded-full flex items-center justify-center text-[14px] font-semibold z-10">
                     {notifiesBadge?.length}
                   </span>
                 )}
