@@ -8,6 +8,12 @@ const nextConfig = {
         port: "8080",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "nestjs-topcv-clone.onrender.com",
+        port: "",
+        pathname: "/images/**",
+      },
     ],
     domains: ["localhost"],
   },
