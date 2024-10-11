@@ -312,7 +312,8 @@ const ChatWidget = () => {
                   key={index}
                   position={message.position}
                   type={message.type}
-                  text={renderMessageContent(message)}
+                  // text={String(renderMessageContent(message))}
+                  text={renderMessageContent(message) as unknown as string}
                   date={message.date}
                   avatar={message.avatar}
                 />
