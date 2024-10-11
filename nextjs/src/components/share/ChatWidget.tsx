@@ -123,8 +123,6 @@ const ChatWidget = () => {
     }
     setInputText("");
   };
-
-  // const handleSend = async (text: string) => {
   //   if (text.trim()) {
   //     setMessages((prevMessages: any) => [
   //       ...prevMessages,
