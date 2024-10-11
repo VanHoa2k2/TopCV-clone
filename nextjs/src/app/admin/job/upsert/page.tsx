@@ -164,8 +164,6 @@ const ViewUpsertJob = (props: any) => {
           id: cp && cp.length > 0 ? cp[0] : "",
           name: values?.company.label,
           logo: cp && cp.length > 1 ? cp[1] : "",
-          employeeSize: "", // Add this line
-          address: "", // Add this line
         },
         location: values?.location,
         salary: salary,
