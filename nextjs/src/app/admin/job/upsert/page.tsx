@@ -161,11 +161,11 @@ const ViewUpsertJob = (props: any) => {
         skills: values?.skills,
         occupations: values?.occupations,
         company: {
-          id: cp && cp.length > 0 ? cp[0] : "",
+          id: cp && cp.length > 0 ? parseInt(cp[0], 10) : 0, // Ensure id is a number
           name: values?.company.label,
           logo: cp && cp.length > 1 ? cp[1] : "",
-          employeeSize: "",
-          address: "",
+          employeeSize: "", // Set this to a valid value if available
+          address: "", // Set this to a valid value if available
         },
         location: values?.location,
         salary: salary,
