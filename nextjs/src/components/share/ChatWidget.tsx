@@ -310,12 +310,21 @@ const ChatWidget = () => {
               messages.map((message: any, index: number) => (
                 <MessageBox
                   key={index}
-                  position={message.position}
-                  type={message.type}
-                  // text={String(renderMessageContent(message))}
+                  position={message?.position}
+                  id={message?.id}
+                  title={message?.title}
+                  focus={message?.focus}
+                  titleColor={message?.titleColor}
+                  type={message?.type}
                   text={renderMessageContent(message) as unknown as string}
-                  date={message.date}
-                  avatar={message.avatar}
+                  date={message?.date}
+                  avatar={message?.avatar}
+                  forwarded={message?.forwarded}
+                  replyButton={message?.replyButton}
+                  removeButton={message?.removeButton}
+                  status={message?.status}
+                  notch={message?.notch}
+                  retracted={message?.retracted}
                 />
               ))
             )}
@@ -342,6 +351,7 @@ const ChatWidget = () => {
                   <AiOutlineSend />
                 </button>
               }
+              maxHeight={40}
             />
           </div>
         </div>
