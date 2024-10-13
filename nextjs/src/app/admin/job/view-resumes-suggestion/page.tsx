@@ -3,7 +3,6 @@ import {
   Breadcrumb,
   Button,
   message,
-  Modal,
   notification,
   Popconfirm,
   Select,
@@ -12,6 +11,7 @@ import {
   TableColumnsType,
   TablePaginationConfig,
   TableProps,
+  Tooltip,
 } from "antd";
 import "@/styles/reset.scss";
 import "react-quill/dist/quill.snow.css";
@@ -30,6 +30,7 @@ import { ALL_PERMISSIONS } from "@/lib/permissions";
 import { DeleteOutlined, EditOutlined, MailOutlined } from "@ant-design/icons";
 import ModalSendMail from "@/components/admin/resume/modal.send-mail";
 import { ActionType } from "@ant-design/pro-components";
+import ModalSendManyMail from "@/components/admin/resume/modal.sendManyMail";
 
 const { Option } = Select;
 
@@ -41,8 +42,13 @@ const fetchResumes = async (url: string, jobId: number) => {
 
 const ViewResumesSuggestion = (props: any) => {
   let params = useSearchParams();
+
+  const [openModalModalSendManyMail, setOpenModalSendManyMail] =
+    useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [dataInit, setDataInit] = useState<IResume | null>(null);
+  const [listDataInit, setListDataInit] = useState<IResume[]>([]);
+  const [selectedResumes, setSelectedResumes] = useState<IResume[]>([]); // Thêm trạng thái để quản lý ứng viên đã chọn
 
   const id = params?.get("id"); // job id
   const name = params?.get("name"); // job id
@@ -166,6 +172,21 @@ const ViewResumesSuggestion = (props: any) => {
     }
   };
 
+  const handleSelectResume = (resume: IResume) => {
+    setSelectedResumes((prev) => {
+      if (prev.includes(resume)) {
+        return prev.filter((r) => r.id !== resume.id); // Bỏ chọn nếu đã chọn
+      }
+      return [...prev, resume]; // Thêm vào danh sách đã chọn
+    });
+  };
+
+  const handleSendEmailToSelected = () => {
+    // Logic để gửi email cho tất cả các ứng viên đã chọn
+    setOpenModalSendManyMail(true);
+    setListDataInit(selectedResumes); // Set the selected resumes to be sent
+  };
+
   const columns: TableColumnsType<IResume> = [
     {
       title: "STT",
@@ -221,6 +242,16 @@ const ViewResumesSuggestion = (props: any) => {
       render: (createdAt) => {
         return <>{dayjs(createdAt).format("DD-MM-YYYY HH:mm:ss")}</>;
       },
+    },
+    {
+      title: "Chọn",
+      render: (record) => (
+        <input
+          type="checkbox"
+          checked={selectedResumes.includes(record)}
+          onChange={() => handleSelectResume(record)}
+        />
+      ),
     },
     {
       title: "Actions",
@@ -313,11 +344,31 @@ const ViewResumesSuggestion = (props: any) => {
         />
       </div>
 
+      <Tooltip
+        placement="top"
+        title={<span>Chọn các ứng viên để gửi mail</span>}
+      >
+        <Button
+          type="primary"
+          onClick={handleSendEmailToSelected}
+          disabled={selectedResumes.length === 0} // Vô hiệu hóa nếu không có ứng viên nào được chọn
+        >
+          Gửi email cho các ứng viên đã chọn
+        </Button>
+      </Tooltip>
+
       <ModalSendMail
         openModal={openModal}
         setOpenModal={setOpenModal}
         dataInit={dataInit}
         setDataInit={setDataInit}
+      />
+
+      <ModalSendManyMail
+        openModal={openModalModalSendManyMail}
+        setOpenModal={setOpenModalSendManyMail}
+        selectedResumes={listDataInit}
+        resetSelectedResumes={() => setSelectedResumes([])} // Reset selected resumes
       />
     </div>
   );

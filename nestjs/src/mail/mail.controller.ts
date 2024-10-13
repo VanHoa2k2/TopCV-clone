@@ -5,6 +5,7 @@ import { MailService } from './mail.service';
 export interface IMail {
   email: string;
   name: string;
+  nameJob: string;
   title: string;
   contentMail: string;
   token: string;
@@ -18,6 +19,7 @@ export class MailController {
   @Post()
   @ResponseMessage('Send mail confirm')
   create(@Body() receiver: IMail) {
+    console.log(receiver);
     return this.mailService.sendUserConfirmation(receiver);
   }
 }

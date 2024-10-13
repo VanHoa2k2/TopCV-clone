@@ -13,7 +13,9 @@ export class MailService {
   async sendUserConfirmation(receiver: IMail) {
     const url = `${this.configService.get<string>(
       'URL_FRONTEND',
-    )}/verify-interview?token=${receiver.token}`;
+    )}/verify-interview?token=${receiver.token}&nameJob=${encodeURIComponent(
+      receiver.nameJob,
+    )}`;
 
     await this.mailerService.sendMail({
       to: receiver.email,

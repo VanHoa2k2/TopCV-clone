@@ -190,13 +190,15 @@ export interface IResume {
   url: string;
   status: string;
   jobId: number;
-  nameJob: string;
+  job: {
+    id: number;
+    name: string;
+  };
   token: string;
   createdBy?: {
     id: number;
     name: string;
   };
-  createdBy?: string;
   isDeleted?: boolean;
   deletedAt?: boolean | null;
   createdAt?: string;
@@ -260,6 +262,7 @@ export interface IRole {
 export interface IMail {
   email: string;
   name: string;
+  nameJob: string;
   title: string;
   contentMail: string;
   token: string;

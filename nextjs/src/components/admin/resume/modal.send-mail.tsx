@@ -50,18 +50,18 @@ const ModalSendMail = (props: IProps) => {
     ReactQuill = require("react-quill");
     require("react-quill/dist/quill.snow.css");
   }
-
+  console.log(dataInit);
   const submitSendMail = async (valuesForm: any) => {
     const { name, email, title } = valuesForm;
 
     const res = await mailApiRequest.callSendMailConfirm({
       name,
+      nameJob: dataInit?.job?.name as string,
       email,
       title,
       contentMail,
       token: dataInit?.token as string,
     });
-
     if (res.statusCode === 201) {
       message.success("Gửi mail thành công!");
       handleReset();
