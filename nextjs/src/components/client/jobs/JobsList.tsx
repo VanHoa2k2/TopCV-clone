@@ -34,14 +34,19 @@ const JobsList = () => {
 
   const fetchJobs = async (page: number, sort?: any, activeFilter?: string) => {
     setIsLoading(true);
-    const { data } = await jobApiRequest.callFetchJob(
-      `current=${page}&pageSize=12&${
-        sort && activeFilter ? `${sort}=${activeFilter}` : ""
-      }`
-    );
-    setJobsData(data || null);
-    setIsLoading(false);
-    setInitialLoad(false); // Set initial load to false after first fetch
+    try {
+      const { data } = await jobApiRequest.callFetchJob(
+        `current=${page}&pageSize=12&${
+          sort && activeFilter ? `${sort}=${activeFilter}` : ""
+        }`
+      );
+      setJobsData(data || null);
+    } catch (error) {
+      console.error("Error fetching jobs:", error); // Xử lý lỗi
+    } finally {
+      setIsLoading(false);
+      setInitialLoad(false); // Set initial load to false after first fetch
+    }
   };
 
   const handlePrevPage = () => {

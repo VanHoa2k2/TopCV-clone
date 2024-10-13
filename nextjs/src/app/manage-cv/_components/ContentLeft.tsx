@@ -33,9 +33,8 @@ const ContentLeft = () => {
 
   const fetchUpdateUserCV = async () => {
     setLoading(true); // Bắt đầu loading
-    const data = await userApiRequest.callUpdateCVByUser("");
-
     try {
+      const data = await userApiRequest.callUpdateCVByUser("");
       if (data.statusCode === 200) {
         const res = await authApiRequest.slideTokenFromNextClientToNextServer();
         localStorage.setItem("access_token", res?.data?.access_token as string);

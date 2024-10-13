@@ -24,16 +24,20 @@ export default function RefreshToken() {
         // khi access_token sắp hết hạn, còn dưới 10p thì sẽ được refresh token nhận được access và refresh token mới và set vào cookie
         // accessTokenExpires và access_token mới cũng được lưu vào local storage
         if (differenceInMinutes(expiresAt, now) < 10) {
-          const res =
-            await authApiRequest.slideTokenFromNextClientToNextServer();
-          localStorage.setItem(
-            "access_token",
-            res?.data?.access_token as string
-          );
-          localStorage.setItem(
-            "accessTokenExpiresAt",
-            res?.data?.accessTokenExpires as string
-          );
+          try {
+            const res =
+              await authApiRequest.slideTokenFromNextClientToNextServer();
+            localStorage.setItem(
+              "access_token",
+              res?.data?.access_token as string
+            );
+            localStorage.setItem(
+              "accessTokenExpiresAt",
+              res?.data?.accessTokenExpires as string
+            );
+          } catch (error) {
+            console.error("Error refreshing token:", error); // Xử lý lỗi
+          }
         }
       }, 1000 * 60 * 5);
       return () => clearInterval(interval);

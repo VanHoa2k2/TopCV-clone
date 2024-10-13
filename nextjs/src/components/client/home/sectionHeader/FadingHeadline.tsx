@@ -18,7 +18,6 @@ const FadingHeadline = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsFading(true);
-
       setTimeout(() => {
         setCurrentText((prevIndex) => (prevIndex + 1) % textList.length);
         setIsFading(false);

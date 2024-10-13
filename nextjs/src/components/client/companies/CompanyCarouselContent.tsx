@@ -74,7 +74,7 @@ const CompanyCarouselContent: React.FC<CompanyCarouselContentProps> = ({
         </div>
       </div>
       <CarouselContent>
-        {companies ? (
+        {companies.length > 0 ? (
           companies.map((company: ICompany, index: number) => (
             <CarouselItem
               key={index}
