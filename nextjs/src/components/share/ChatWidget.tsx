@@ -63,63 +63,63 @@ const ChatWidget = () => {
       };
       setMessages((prevMessages: any) => [...prevMessages, typingMessage]);
 
-      try {
-        const response = await chatbotApiRequest(text);
-        if (response && response.length > 0) {
-          response.forEach((botResponse: any) => {
-            // Encode job name and location if present in botResponse.text
-            let modifiedText = botResponse.text;
+      // try {
+      //   const response = await chatbotApiRequest(text);
+      //   if (response && response.length > 0) {
+      //     response.forEach((botResponse: any) => {
+      //       // Encode job name and location if present in botResponse.text
+      //       let modifiedText = botResponse.text;
 
-            // Tìm và thay thế phần URL trong botResponse.text nếu có
-            const jobNameMatch = botResponse.text.match(/name=([^&]*)/);
-            const jobLocationMatch = botResponse.text.match(/location=([^&]*)/);
+      //       // Tìm và thay thế phần URL trong botResponse.text nếu có
+      //       const jobNameMatch = botResponse.text.match(/name=([^&]*)/);
+      //       const jobLocationMatch = botResponse.text.match(/location=([^&]*)/);
 
-            if (jobNameMatch) {
-              modifiedText = modifiedText.replace(
-                jobNameMatch[1],
-                encodeURIComponent(jobNameMatch[1])
-              );
-            }
+      //       if (jobNameMatch) {
+      //         modifiedText = modifiedText.replace(
+      //           jobNameMatch[1],
+      //           encodeURIComponent(jobNameMatch[1])
+      //         );
+      //       }
 
-            if (jobLocationMatch) {
-              modifiedText = modifiedText.replace(
-                jobLocationMatch[1],
-                encodeURIComponent(jobLocationMatch[1])
-              );
-            }
+      //       if (jobLocationMatch) {
+      //         modifiedText = modifiedText.replace(
+      //           jobLocationMatch[1],
+      //           encodeURIComponent(jobLocationMatch[1])
+      //         );
+      //       }
 
-            setMessages((prevMessages: any) => [
-              ...prevMessages,
-              {
-                position: "left",
-                type: "text",
-                text: modifiedText,
-                date: new Date(),
-                buttons: botResponse.buttons,
-                avatar:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPYtqytSUUShobf3PDxLMbcfTYj9DmcY3P1Q&s",
-              },
-            ]);
-          });
+      //       setMessages((prevMessages: any) => [
+      //         ...prevMessages,
+      //         {
+      //           position: "left",
+      //           type: "text",
+      //           text: modifiedText,
+      //           date: new Date(),
+      //           buttons: botResponse.buttons,
+      //           avatar:
+      //             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPYtqytSUUShobf3PDxLMbcfTYj9DmcY3P1Q&s",
+      //         },
+      //       ]);
+      //     });
 
-          // Xóa tin nhắn "Đang trả lời..." sau khi nhận được phản hồi
-          setMessages((prevMessages: any) =>
-            prevMessages.filter((msg: any) => !msg.isTyping)
-          );
-        }
-      } catch (error) {
-        console.error("Error communicating with Rasa:", error);
-        setMessages((prevMessages: any) => [
-          ...prevMessages,
-          {
-            position: "left",
-            type: "text",
-            text: "Xin lỗi, có lỗi xảy ra khi kết nối với chatbot. Vui lòng thử lại sau.",
-            date: new Date(),
-            avatar: ChatbotIcon,
-          },
-        ]);
-      }
+      //     // Xóa tin nhắn "Đang trả lời..." sau khi nhận được phản hồi
+      //     setMessages((prevMessages: any) =>
+      //       prevMessages.filter((msg: any) => !msg.isTyping)
+      //     );
+      //   }
+      // } catch (error) {
+      //   console.error("Error communicating with Rasa:", error);
+      //   setMessages((prevMessages: any) => [
+      //     ...prevMessages,
+      //     {
+      //       position: "left",
+      //       type: "text",
+      //       text: "Xin lỗi, có lỗi xảy ra khi kết nối với chatbot. Vui lòng thử lại sau.",
+      //       date: new Date(),
+      //       avatar: ChatbotIcon,
+      //     },
+      //   ]);
+      // }
     }
     setInputText("");
   };
