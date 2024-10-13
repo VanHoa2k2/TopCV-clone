@@ -8,8 +8,14 @@ import parse from "html-react-parser";
 import SkeletonCompanyCard from "./SkeletonCompanyCard";
 
 const SectionListCompany = async () => {
-  const response = await companyApiRequest.callFetchAllCompany();
-  const companies = response.data as unknown as IAllCompany[];
+  let companies: IAllCompany[];
+  try {
+    const response = await companyApiRequest.callFetchAllCompany();
+    companies = response.data as unknown as IAllCompany[];
+  } catch (error) {
+    console.error("Error fetching companies:", error); // Xử lý lỗi
+    companies = []; // Đặt giá trị mặc định nếu có lỗi
+  }
 
   const isLoading = !companies;
 
@@ -20,11 +26,10 @@ const SectionListCompany = async () => {
       </h1>
       <div className="grid grid-cols-3 gap-[15px]">
         {isLoading
-          ? // Hiển thị skeleton khi đang tải
-            Array.from({ length: 3 }).map((_, index) => (
+          ? Array.from({ length: 3 }).map((_, index) => (
               <SkeletonCompanyCard key={index} />
             ))
-          : companies?.map((company: ICompany) => (
+          : companies.map((company: ICompany) => (
               <div
                 key={company.id}
                 className="rounded-[5px] shadow-[-1px_1px_4px_rgba(0,0,0,0.051)] h-[400px] mb-6 overflow-hidden hover:shadow-[0_5px_10px_0_rgba(0,0,0,0.07)] transition-shadow duration-300"

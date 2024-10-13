@@ -21,11 +21,16 @@ const HeaderAdmin = (props: HeaderAdminProps) => {
   const dispatch = useAppDispatch();
 
   const handleLogout = async () => {
-    const res = await authApiRequest.logoutFromNextClientToNextServer();
-    if (res && res.data) {
-      dispatch(setLogoutAction({}));
-      message.success("Đăng xuất thành công");
-      route.push("/");
+    try {
+      const res = await authApiRequest.logoutFromNextClientToNextServer();
+      if (res && res.data) {
+        dispatch(setLogoutAction({}));
+        message.success("Đăng xuất thành công");
+        route.push("/");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+      message.error("Đăng xuất không thành công. Vui lòng thử lại.");
     }
   };
 
