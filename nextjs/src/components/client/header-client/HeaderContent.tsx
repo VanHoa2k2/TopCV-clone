@@ -38,10 +38,14 @@ const HeaderContent = () => {
   useEffect(() => {
     if (isAuthenticated) {
       const fetchUser = async () => {
-        const res = await userApiRequest.callFetchUserById(
-          userAccount?.id as number
-        );
-        setUser(res?.data);
+        try {
+          const res = await userApiRequest.callFetchUserById(
+            userAccount?.id as number
+          );
+          setUser(res?.data);
+        } catch (error) {
+          console.error("Error fetching user:", error); // Xử lý lỗi
+        }
       };
 
       fetchUser();
