@@ -41,6 +41,17 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   };
 }
 
+export async function generateStaticParams() {
+  // Giả sử bạn có một API gọi để lấy danh sách tất cả các công ty
+  const companies = await companyApiRequest.callFetchAllCompany();
+
+  return Array.isArray(companies?.data)
+    ? companies.data.map((company: { id: string }) => ({
+        id: company.id,
+      }))
+    : []; // Return an empty array if data is not an array
+}
+
 const CompanyDetailPage = async ({ params }: IProps) => {
   try {
     const res = await callFetchCompanyById(params.id);
