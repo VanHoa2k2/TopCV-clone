@@ -20,6 +20,7 @@ import { message, notification } from "antd";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUserLoginInfo } from "@/redux/slice/accountSlide";
+import { Suspense } from "react";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -129,4 +130,13 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+// Wrap LoginForm in a Suspense boundary
+const LoginForHRPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
+};
+
+export default LoginForHRPage;

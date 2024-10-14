@@ -21,6 +21,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUserLoginInfo } from "@/redux/slice/accountSlide";
 import accountApiRequest from "@/apiRequests/account";
+import { Suspense } from "react";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -136,4 +137,13 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+// Wrap LoginForm in a Suspense boundary
+const LoginPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
+};
+
+export default LoginPage;
