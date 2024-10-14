@@ -149,6 +149,10 @@ export class JobsService {
     };
   }
 
+  async findAllJobs(): Promise<Job[]> {
+    return await this.jobRepository.find();
+  }
+
   async getParamsOccupation() {
     const topOccupations = await this.jobRepository
       .createQueryBuilder('job')

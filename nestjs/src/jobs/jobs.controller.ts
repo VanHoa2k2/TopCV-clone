@@ -36,6 +36,13 @@ export class JobsController {
   }
 
   @Public()
+  @Get('all')
+  @ResponseMessage('Fetch all job')
+  findAllJobs() {
+    return this.jobsService.findAllJobs();
+  }
+
+  @Public()
   @Get('get-param-occupation')
   @ResponseMessage('Get param occupation')
   getParamsOccupation() {
