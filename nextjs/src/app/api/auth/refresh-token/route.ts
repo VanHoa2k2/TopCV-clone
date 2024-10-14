@@ -17,9 +17,7 @@ export async function POST(request: Request) {
     const res = await authApiRequest.slideTokenFromNextServerToServer(
       refresh_token.value
     );
-    const newExpiresDate = new Date(
-      res?.data?.accessTokenExpires as unknown as number
-    ).toUTCString();
+
     const headers = new Headers();
     headers.append(
       "Set-Cookie",
