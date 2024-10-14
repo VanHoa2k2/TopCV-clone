@@ -4,10 +4,10 @@ import "./globals.scss";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Providers } from "@/redux/provider";
 import FetchAccount from "@/components/FetchAccount";
-import { cookies } from "next/headers";
 import RefreshToken from "@/components/refresh-token";
 import AppContent from "@/components/app.content";
 import { baseOpenGraph } from "@/lib/shared-metadata";
+// import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,16 +22,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = cookies();
-  const access_token = cookieStore.get("access_token");
+  // const cookieStore = cookies();
+  // const access_token = cookieStore.get("access_token");
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          {access_token && (
-            <FetchAccount access_token={access_token?.value as string} />
-          )}
+          <FetchAccount />
           <AntdRegistry>
             <AppContent>{children}</AppContent>
           </AntdRegistry>
