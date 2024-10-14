@@ -17,6 +17,7 @@ const nextConfig = {
     ],
     domains: ["localhost"],
   },
+  output: "export",
 };
 
 export default nextConfig;
