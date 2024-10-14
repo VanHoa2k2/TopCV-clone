@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from "@/redux/hooks";
 import { fetchAccount } from "@/redux/slice/accountSlide";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -14,9 +14,8 @@ const FetchAccount = () => {
 
   useEffect(() => {
     // Lấy access_token từ cookies sau khi trang đã được tải
-    const cookieStore = cookies();
-    const token = cookieStore.get("access_token");
-    setAccessToken(token?.value || null);
+    const access_token = localStorage.getItem("access_token");
+    setAccessToken(access_token || null);
   }, []);
 
   useEffect(() => {

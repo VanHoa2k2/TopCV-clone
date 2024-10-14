@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: "export",
   images: {
     remotePatterns: [
       {
@@ -17,7 +18,6 @@ const nextConfig = {
     ],
     domains: ["localhost"],
   },
-  output: "export",
 };
 
 export default nextConfig;
