@@ -56,10 +56,6 @@ const LoginForm = () => {
         dispatch(setUserLoginInfo(res?.data?.user));
         message.success("Đăng nhập tài khoản thành công!");
         console.log(res?.data);
-        // if (res?.data?.user?.role?.name !== "NORMAL_USER") {
-        //   router.push(callback ? callback : "/");
-        // } else {
-        // }
         router.push("/admin");
       }
     } else {

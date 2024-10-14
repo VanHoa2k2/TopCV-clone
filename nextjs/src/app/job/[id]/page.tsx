@@ -48,16 +48,16 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
-  // Giả sử bạn có một API gọi để lấy danh sách tất cả các công ty
-  const jobs = await jobApiRequest.callFetchAllJob();
+// export async function generateStaticParams() {
+//   // Giả sử bạn có một API gọi để lấy danh sách tất cả các công ty
+//   const jobs = await jobApiRequest.callFetchAllJob();
 
-  return Array.isArray(jobs?.data)
-    ? jobs.data.map((job: { id: number }) => ({
-        id: String(job.id), // Ensure id is a string
-      }))
-    : [];
-}
+//   return Array.isArray(jobs?.data)
+//     ? jobs.data.map((job: { id: number }) => ({
+//         id: String(job.id), // Ensure id is a string
+//       }))
+//     : [];
+// }
 
 const JobDetailPage = async ({ params }: IProps) => {
   try {
