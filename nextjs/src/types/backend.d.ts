@@ -177,6 +177,44 @@ export interface IJob {
   updatedAt?: string;
 }
 
+export interface IAllJob {
+  id?: number;
+  name: string;
+  skills?: {
+    id: number;
+    name: string;
+  }[];
+  occupations: {
+    id: number;
+    name: string;
+  }[];
+  company?: {
+    id: number;
+    name: string;
+    employeeSize?: string;
+    address?: string;
+    logo?: string;
+  };
+  location: string;
+  salary: string;
+  employmentType: string;
+  genderReq: string;
+  quantity: number;
+  level: string;
+  experience: string;
+  description: string;
+  startDate: Date;
+  endDate: Date;
+  isActive: boolean;
+
+  createdBy?: string;
+  isDeleted?: boolean;
+  deletedAt?: boolean | null;
+  createdAt?: string;
+  updatedAt?: string;
+}
+[];
+
 export interface IParamsOccupation {
   name: string;
   jobCount: number;

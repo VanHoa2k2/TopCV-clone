@@ -46,8 +46,8 @@ export async function generateStaticParams() {
   const companies = await companyApiRequest.callFetchAllCompany();
 
   return Array.isArray(companies?.data)
-    ? companies.data.map((company: { id: string }) => ({
-        id: company.id,
+    ? companies.data.map((company: { id: number }) => ({
+        id: String(company.id),
       }))
     : [];
 }
