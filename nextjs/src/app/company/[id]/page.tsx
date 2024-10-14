@@ -49,7 +49,7 @@ export async function generateStaticParams() {
     ? companies.data.map((company: { id: string }) => ({
         id: company.id,
       }))
-    : []; // Return an empty array if data is not an array
+    : [];
 }
 
 const CompanyDetailPage = async ({ params }: IProps) => {

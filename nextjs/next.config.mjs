@@ -18,7 +18,6 @@ const nextConfig = {
     domains: ["localhost"],
   },
   output: "export",
-  assetPrefix: "./",
 };
 
 export default nextConfig;
