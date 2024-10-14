@@ -11,6 +11,7 @@ export function middleware(request: NextRequest) {
   const access_token = request.cookies.get("access_token")?.value;
   // Chưa đăng nhập thì không cho vào private paths
   if (privatePaths.some((path) => pathname.startsWith(path)) && !access_token) {
+    console.warn("Unauthorized access attempt to private path:", pathname);
     return NextResponse.redirect(new URL("/login", request.url));
   }
   // Đăng nhập rồi thì không cho vào login/register nữa

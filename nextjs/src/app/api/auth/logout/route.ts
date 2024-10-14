@@ -40,6 +40,7 @@ export async function POST(request: Request) {
       headers,
     });
   } catch (error) {
+    console.error("Error in POST /auth/logout:", error);
     if (error instanceof HttpError) {
       return Response.json(error.payload, {
         status: error.status,

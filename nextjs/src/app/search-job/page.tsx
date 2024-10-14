@@ -15,7 +15,6 @@ interface IProps {
   searchParams: { name: string; location: string };
 }
 
-// Nhận searchParams từ context của Server Component
 const SearchJobPage = async ({ searchParams }: IProps) => {
   const { name, location } = searchParams;
   const queryParams = new URLSearchParams({
@@ -25,83 +24,94 @@ const SearchJobPage = async ({ searchParams }: IProps) => {
     ...(location && { location: location }),
   });
 
-  const res = await jobApiRequest.callFetchJob(queryParams.toString());
-
-  return (
-    <div className="bg-[#f3f5f7]">
-      <div className="bg-[#19734e] py-4">
-        <HeaderSearchJobPage name={name} location={location} />
-      </div>
-      <div className="container">
-        <div className="py-3">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className="pr-2.5 text-sm text-primary font-semibold"
-            >
-              Trang chủ
-            </Link>
-            <div className="text-sm text-[#212f3f]">
-              <IoIosArrowForward />
-            </div>
-            <p className="text-[#212f3f] text-[14px] leading-[22px] pl-2.5">
-              Tuyển dụng {res.data?.result.length} việc làm {name} [Update{" "}
-              {dayjs(new Date()).format("DD/MM/YYYY")}]
-            </p>
-          </div>
+  try {
+    const res = await jobApiRequest.callFetchJob(queryParams.toString());
+    return (
+      <div className="bg-[#f3f5f7]">
+        <div className="bg-[#19734e] py-4">
+          <HeaderSearchJobPage name={name} location={location} />
         </div>
-        <div className="flex pb-10 gap-5">
-          <div className="w-[75%] flex flex-col gap-5">
-            {res?.data?.result ? (
-              res?.data?.result.length > 0 ? (
-                res?.data?.result.map((job) => (
-                  <JobCardSuggest job={job} key={job.id} />
-                ))
+        <div className="container">
+          <div className="py-3">
+            <div className="flex items-center">
+              <Link
+                href="/"
+                className="pr-2.5 text-sm text-primary font-semibold"
+              >
+                Trang chủ
+              </Link>
+              <div className="text-sm text-[#212f3f]">
+                <IoIosArrowForward />
+              </div>
+              <p className="text-[#212f3f] text-[14px] leading-[22px] pl-2.5">
+                Tuyển dụng {res.data?.result.length} việc làm {name} [Update{" "}
+                {dayjs(new Date()).format("DD/MM/YYYY")}]
+              </p>
+            </div>
+          </div>
+          <div className="flex pb-10 gap-5">
+            <div className="w-[75%] flex flex-col gap-5">
+              {res?.data?.result ? (
+                res?.data?.result.length > 0 ? (
+                  res?.data?.result.map((job) => (
+                    <JobCardSuggest job={job} key={job.id} />
+                  ))
+                ) : (
+                  <div className="flex items-center justify-center flex-col py-5 bg-[#fff] my-5 rounded-md">
+                    <Image
+                      src={NoneResult}
+                      alt="None Result"
+                      width={200}
+                      height={200}
+                    />
+                    <span className="text-[12px] leading-[16px] text-[#6f7882] font-medium">
+                      Chưa tìm thấy việc làm phù hợp với yêu cầu của bạn
+                    </span>
+                  </div>
+                )
               ) : (
-                <div className="flex items-center justify-center flex-col py-5 bg-[#fff] my-5 rounded-md">
+                Array(6)
+                  .fill(0)
+                  .map((_, index) => <JobCardSkeleton key={index} />)
+              )}
+            </div>
+            <div className="w-[25%]">
+              <div className="sticky top-[85px] flex flex-col gap-5">
+                <Link href="/">
                   <Image
-                    src={NoneResult}
-                    alt="None Result"
-                    width={200}
-                    height={200}
+                    src={Banner}
+                    alt="Banner"
+                    width={365}
+                    height={660}
+                    className="rounded-[8px]"
                   />
-                  <span className="text-[12px] leading-[16px] text-[#6f7882] font-medium">
-                    Chưa tìm thấy việc làm phù hợp với yêu cầu của bạn
-                  </span>
-                </div>
-              )
-            ) : (
-              Array(6)
-                .fill(0)
-                .map((_, index) => <JobCardSkeleton key={index} />)
-            )}
-          </div>
-          <div className="w-[25%]">
-            <div className="sticky top-[85px] flex flex-col gap-5">
-              <Link href="/">
-                <Image
-                  src={Banner}
-                  alt="Banner"
-                  width={365}
-                  height={660}
-                  className="rounded-[8px]"
-                />
-              </Link>
-              <Link href="/">
-                <Image
-                  src={Report}
-                  alt="Report"
-                  width={351}
-                  height={276}
-                  className="rounded-[8px]"
-                />
-              </Link>
+                </Link>
+                <Link href="/">
+                  <Image
+                    src={Report}
+                    alt="Report"
+                    width={351}
+                    height={276}
+                    className="rounded-[8px]"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Error fetching jobs:", error);
+    return (
+      <div className="flex items-center justify-center flex-col py-5">
+        <span className="text-red-500">
+          Đã xảy ra lỗi khi tải việc làm. Vui lòng thử lại sau.
+        </span>
+      </div>
+    );
+  }
+  // ... existing code ...
 };
 
 const JobCardSkeleton = () => (

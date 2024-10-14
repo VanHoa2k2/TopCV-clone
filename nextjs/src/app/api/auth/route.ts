@@ -14,18 +14,25 @@ export async function POST(request: Request) {
     );
   }
 
-  const headers = new Headers();
-  headers.append(
-    "Set-Cookie",
-    `access_token=${access_token}; Path=/; HttpOnly; SameSite=Lax; Secure`
-  );
-  headers.append(
-    "Set-Cookie",
-    `refresh_token=${refresh_token}; Path=/; HttpOnly; SameSite=Lax; Secure`
-  );
+  try {
+    const headers = new Headers();
+    headers.append(
+      "Set-Cookie",
+      `access_token=${access_token}; Path=/; HttpOnly; SameSite=Lax; Secure`
+    );
+    headers.append(
+      "Set-Cookie",
+      `refresh_token=${refresh_token}; Path=/; HttpOnly; SameSite=Lax; Secure`
+    );
 
-  return new Response(JSON.stringify(body), {
-    status: 200,
-    headers,
-  });
+    return new Response(JSON.stringify(body), {
+      status: 200,
+      headers,
+    });
+  } catch (error) {
+    console.error("Error in POST /auth:", error);
+    return new Response(JSON.stringify({ message: "Lỗi không xác định" }), {
+      status: 500,
+    });
+  }
 }
