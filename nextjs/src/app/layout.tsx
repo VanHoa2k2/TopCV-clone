@@ -24,11 +24,14 @@ export default function RootLayout({
 }>) {
   const cookieStore = cookies();
   const access_token = cookieStore.get("access_token");
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <FetchAccount access_token={access_token?.value as string} />
+          {access_token && (
+            <FetchAccount access_token={access_token?.value as string} />
+          )}
           <AntdRegistry>
             <AppContent>{children}</AppContent>
           </AntdRegistry>
