@@ -8,16 +8,21 @@ import { IJob, IModelPaginate } from "@/types/backend";
 import PaginationControls from "../../share/PaginationControls";
 import JobCard from "./JobCard";
 import SkeletonJobCard from "./SkeletonJobCard";
-import { Tooltip } from "antd";
 import { FaCheck } from "react-icons/fa6";
 import { EXPERIENCES_LIST } from "@/lib/utils";
 import FilterAndScrollableButtons from "./FilterAndScrollableButtons";
 
-const JobsList = () => {
+const JobsList = ({
+  initialJobsData,
+}: {
+  initialJobsData: IModelPaginate<IJob> | null;
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [jobsData, setJobsData] = useState<IModelPaginate<IJob> | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [initialLoad, setInitialLoad] = useState(true);
+  const [jobsData, setJobsData] = useState<IModelPaginate<IJob> | null>(
+    initialJobsData
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>("");
   const [selectedFilter, setSelectedFilter] = useState<{
     label: string;
