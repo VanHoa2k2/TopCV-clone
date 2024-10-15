@@ -6,27 +6,19 @@ import { fetchAccount } from "@/redux/slice/accountSlide";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const FetchAccount = () => {
+const FetchAccount = (props: { access_token: string | undefined }) => {
+  const { access_token } = props;
   const pathname = usePathname();
   const dispatch = useAppDispatch();
 
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Lấy access_token từ cookies sau khi trang đã được tải
-    const access_token = localStorage.getItem("access_token");
-    setAccessToken(access_token || null);
-  }, []);
-
   useEffect(() => {
     if (pathname === "/login" || pathname === "/register") return;
-    if (accessToken) {
-      // Kiểm tra accessToken
-      dispatch(fetchAccount(accessToken)).catch((error) => {
+    if (access_token) {
+      dispatch(fetchAccount(access_token)).catch((error) => {
         console.error("Error fetching account:", error); // Xử lý lỗi
       });
     }
-  }, [dispatch, accessToken, pathname]);
+  }, [dispatch, access_token, pathname]);
 
   return <></>;
 };
