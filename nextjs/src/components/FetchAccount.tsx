@@ -2,23 +2,27 @@
 
 import { useAppDispatch } from "@/redux/hooks";
 import { fetchAccount } from "@/redux/slice/accountSlide";
-// import { cookies } from "next/headers";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const FetchAccount = (props: { access_token: string | undefined }) => {
-  const { access_token } = props;
+const FetchAccount = () => {
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const pathname = usePathname();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    const access_token = localStorage.getItem("access_token");
+    setAccessToken(access_token);
+  }, []);
+
+  useEffect(() => {
     if (pathname === "/login" || pathname === "/register") return;
-    if (access_token) {
-      dispatch(fetchAccount(access_token)).catch((error) => {
+    if (accessToken) {
+      dispatch(fetchAccount(accessToken)).catch((error) => {
         console.error("Error fetching account:", error); // Xử lý lỗi
       });
     }
-  }, [dispatch, access_token, pathname]);
+  }, [dispatch, accessToken, pathname]);
 
   return <></>;
 };
