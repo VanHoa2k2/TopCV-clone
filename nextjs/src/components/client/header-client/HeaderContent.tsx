@@ -24,6 +24,9 @@ import { setLogoutAction } from "@/redux/slice/accountSlide";
 import { usePathname } from "next/navigation";
 import userApiRequest from "@/apiRequests/user";
 import { IUser } from "@/types/backend";
+import { FaBars } from "react-icons/fa6";
+import { FaXmark } from "react-icons/fa6";
+import styles from "./header-client.module.scss";
 dayjs.extend(relativeTime);
 
 const HeaderContent = () => {
@@ -35,6 +38,7 @@ const HeaderContent = () => {
     (state) => state?.account?.isAuthenticated
   );
   const [user, setUser] = useState<IUser | undefined>(undefined);
+  const [boxMenu, setBoxMenu] = useState<boolean>(false);
   useEffect(() => {
     if (isAuthenticated) {
       const fetchUser = async () => {
@@ -76,6 +80,18 @@ const HeaderContent = () => {
       label: "Công ty",
       value: "/company",
     },
+  ];
+
+  const itemsMobile = [
+    {
+      label: "Đăng kí tài khoản mới",
+      value: "/register",
+    },
+    {
+      label: "Đăng nhập",
+      value: "/login",
+    },
+    ...items,
   ];
 
   // const handleViewDetailJob = async (item: any) => {
@@ -190,143 +206,189 @@ const HeaderContent = () => {
   );
   return (
     <>
-      <div className="flex">
-        <Link href="/" className="pr-5">
-          <Image src={TopCVLogo} alt="TopCV" width={176} height={72} />
-        </Link>
-
+      <div className="flex items-center justify-between px-6">
         <div className="flex">
-          {items.map((item, index) => (
-            <Link
-              href={item.value}
-              key={index}
-              className={`px-[15px] py-3 mx-[5px] my-[14px] font-semibold hover:text-primary ${
-                pathname.slice(1) === item.value ? "text-primary" : ""
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link href="/" className="pr-5">
+            <Image src={TopCVLogo} alt="TopCV" width={176} height={72} />
+          </Link>
+
+          <div className="hidden lg:flex">
+            {items.map((item, index) => (
+              <Link
+                href={item.value}
+                key={index}
+                className={`px-[15px] py-3 mx-[5px] my-[14px] font-semibold hover:text-primary ${
+                  pathname.slice(1) === item.value ? "text-primary" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
+
+        <>
+          <div className="hidden lg:flex gap-3 items-center">
+            {isAuthenticated === false ? (
+              <>
+                <Button
+                  size={"lg"}
+                  className="bg-white text-primary border border-solid border-primary hover:bg-[#e5f7ed80]"
+                  onClick={() => route.push("/login")}
+                >
+                  Đăng nhập
+                </Button>
+                <Button size={"lg"} onClick={() => route.push("/register")}>
+                  Đăng ký
+                </Button>
+                <Button
+                  size={"lg"}
+                  className="bg-dark rounded hover:bg-[#161f29]"
+                  onClick={() => route.push("/login-for-hr")}
+                >
+                  Đăng tuyển & tìm hồ sơ
+                </Button>
+              </>
+            ) : (
+              <>
+                <div className="flex flex-col gap-1">
+                  <p className="text-[#7f878f] text-[12px] leading-[14px] font-normal">
+                    Bạn là nhà tuyển dụng?
+                  </p>
+                  <Link
+                    href="/login-for-hr"
+                    className="text-[#263a4d] text-sm leading-[22px] font-semibold flex hover:text-primary"
+                  >
+                    Đăng tuyển ngay <FiChevronsRight className="w-5 h-5" />
+                  </Link>
+                </div>
+
+                <RxDividerVertical className="h-[48px] w-[34px] text-[#e6e7e8] opacity-55 mx-[-12px]" />
+
+                <Tooltip
+                  placement="bottom"
+                  title={notifications}
+                  arrow={false}
+                  trigger="click"
+                  color="#fff"
+                  overlayStyle={{ maxWidth: "400px" }}
+                  open={isOpenNotifyTooltip}
+                  onOpenChange={() => setIsOpenNotifyTooltip(false)}
+                >
+                  <div
+                    className="bg-[#00b14f1a] rounded-full cursor-pointer relative"
+                    onClick={() => setIsOpenNotifyTooltip(!isOpenNotifyTooltip)}
+                  >
+                    <FaBell
+                      className="w-10 h-10 p-[10px] text-primary"
+                      type="button"
+                      onMouseEnter={() => {}}
+                      onMouseLeave={() => {}}
+                    />
+                    {notifiesBadge?.length > 0 && (
+                      <span className="absolute top-[-16%] right-[-18%] w-[22px] h-[22px] bg-[#f4eaea] opacity-80 text-[#393838] rounded-full flex items-center justify-center text-[14px] font-semibold z-10">
+                        {notifiesBadge?.length}
+                      </span>
+                    )}
+                  </div>
+                </Tooltip>
+
+                <Tooltip
+                  placement="bottom"
+                  title={text}
+                  trigger="click"
+                  open={isOpenChatTooltip}
+                  onOpenChange={() => setIsOpenChatTooltip(false)}
+                >
+                  <div
+                    className="bg-[#00b14f1a] rounded-full cursor-pointer"
+                    onClick={() => setIsOpenChatTooltip(!isOpenChatTooltip)}
+                  >
+                    <IoIosChatbubbles
+                      className="w-10 h-10 p-2 text-primary"
+                      type="button"
+                      onMouseEnter={() => {}}
+                      onMouseLeave={() => {}}
+                    />
+                  </div>
+                </Tooltip>
+
+                <Tooltip
+                  placement="bottom"
+                  title={menuAccount}
+                  arrow={false}
+                  color="#fff"
+                  overlayStyle={{ maxWidth: "360px" }}
+                  getPopupContainer={(triggerNode: any) =>
+                    triggerNode.parentNode
+                  }
+                >
+                  <div className="flex gap-[6px] items-center cursor-pointer group">
+                    <Avatar
+                      size={32}
+                      src={
+                        <Image
+                          alt="avatar"
+                          width={32}
+                          height={32}
+                          src={
+                            userAccount?.avatar
+                              ? `${process.env.NEXT_PUBLIC_URL_BACKEND}/images/avatar/${userAccount?.avatar}`
+                              : AvatarDefault
+                          }
+                        />
+                      }
+                    ></Avatar>
+
+                    <span className="w-5 text-primary transform transition-transform duration-300 group-hover:rotate-180">
+                      <IoIosArrowDown />
+                    </span>
+                  </div>
+                </Tooltip>
+              </>
+            )}
+          </div>
+          <div
+            className="lg:hidden flex items-center justify-center rounded-full w-10 h-10 bg-[#00b14f1a] cursor-pointer"
+            onClick={() => setBoxMenu(!boxMenu)}
+          >
+            <span className="text-[22px] text-[#00b14f]">
+              {boxMenu ? <FaXmark /> : <FaBars />}
+            </span>
+          </div>
+        </>
       </div>
 
-      <div className="flex gap-3 items-center">
-        {isAuthenticated === false ? (
-          <>
-            <Button
-              size={"lg"}
-              className="bg-white text-primary border border-solid border-primary hover:bg-[#e5f7ed80]"
-              onClick={() => route.push("/login")}
-            >
-              Đăng nhập
-            </Button>
-            <Button size={"lg"} onClick={() => route.push("/register")}>
-              Đăng ký
-            </Button>
-            <Button
-              size={"lg"}
-              className="bg-dark rounded hover:bg-[#161f29]"
-              onClick={() => route.push("/login-for-hr")}
-            >
-              Đăng tuyển & tìm hồ sơ
-            </Button>
-          </>
-        ) : (
-          <>
-            <div className="flex flex-col gap-1">
-              <p className="text-[#7f878f] text-[12px] leading-[14px] font-normal">
-                Bạn là nhà tuyển dụng?
-              </p>
-              <Link
-                href="/login-for-hr"
-                className="text-[#263a4d] text-sm leading-[22px] font-semibold flex hover:text-primary"
-              >
-                Đăng tuyển ngay <FiChevronsRight className="w-5 h-5" />
-              </Link>
-            </div>
-
-            <RxDividerVertical className="h-[48px] w-[34px] text-[#e6e7e8] opacity-55 mx-[-12px]" />
-
-            <Tooltip
-              placement="bottom"
-              title={notifications}
-              arrow={false}
-              trigger="click"
-              color="#fff"
-              overlayStyle={{ maxWidth: "400px" }}
-              open={isOpenNotifyTooltip}
-              onOpenChange={() => setIsOpenNotifyTooltip(false)}
-            >
-              <div
-                className="bg-[#00b14f1a] rounded-full cursor-pointer relative"
-                onClick={() => setIsOpenNotifyTooltip(!isOpenNotifyTooltip)}
-              >
-                <FaBell
-                  className="w-10 h-10 p-[10px] text-primary"
-                  type="button"
-                  onMouseEnter={() => {}}
-                  onMouseLeave={() => {}}
-                />
-                {notifiesBadge?.length > 0 && (
-                  <span className="absolute top-[-16%] right-[-18%] w-[22px] h-[22px] bg-[#f4eaea] opacity-80 text-[#393838] rounded-full flex items-center justify-center text-[14px] font-semibold z-10">
-                    {notifiesBadge?.length}
-                  </span>
-                )}
-              </div>
-            </Tooltip>
-
-            <Tooltip
-              placement="bottom"
-              title={text}
-              trigger="click"
-              open={isOpenChatTooltip}
-              onOpenChange={() => setIsOpenChatTooltip(false)}
-            >
-              <div
-                className="bg-[#00b14f1a] rounded-full cursor-pointer"
-                onClick={() => setIsOpenChatTooltip(!isOpenChatTooltip)}
-              >
-                <IoIosChatbubbles
-                  className="w-10 h-10 p-2 text-primary"
-                  type="button"
-                  onMouseEnter={() => {}}
-                  onMouseLeave={() => {}}
-                />
-              </div>
-            </Tooltip>
-
-            <Tooltip
-              placement="bottom"
-              title={menuAccount}
-              arrow={false}
-              color="#fff"
-              overlayStyle={{ maxWidth: "360px" }}
-              getPopupContainer={(triggerNode: any) => triggerNode.parentNode}
-            >
-              <div className="flex gap-[6px] items-center cursor-pointer group">
-                <Avatar
-                  size={32}
-                  src={
-                    <Image
-                      alt="avatar"
-                      width={32}
-                      height={32}
-                      src={
-                        userAccount?.avatar
-                          ? `${process.env.NEXT_PUBLIC_URL_BACKEND}/images/avatar/${userAccount?.avatar}`
-                          : AvatarDefault
-                      }
-                    />
-                  }
-                ></Avatar>
-
-                <span className="w-5 text-primary transform transition-transform duration-300 group-hover:rotate-180">
-                  <IoIosArrowDown />
-                </span>
-              </div>
-            </Tooltip>
-          </>
-        )}
+      <div
+        className={`lg:hidden bg-[#f2f2f2] py-2 px-4 ${
+          boxMenu ? "block" : "hidden"
+        }} ${
+          boxMenu ? styles["animate-slide-down"] : styles["animate-slide-up"]
+        }`}
+      >
+        <h2 className={`text-[#4d5965] text-sm mb-2 ${boxMenu ? "mt-4" : ""}`}>
+          Dành cho ứng viên
+        </h2>
+        {itemsMobile.map((item, index) => (
+          <Link
+            href={item.value}
+            key={index}
+            className="text-primary text-sm font-semibold mb-2 bg-white rounded-[6px] py-4 px-[14px] flex items-center"
+            onClick={() => setBoxMenu(!boxMenu)}
+          >
+            {item.label}
+          </Link>
+        ))}
+        <h2 className="text-[#4d5965] text-sm mb-2 mt-4">
+          Dành cho nhà tuyển dụng
+        </h2>
+        <Link
+          href="/login-for-hr"
+          className="text-primary text-sm font-semibold mb-2 bg-white rounded-[6px] py-4 px-[14px] flex items-center"
+          onClick={() => setBoxMenu(!boxMenu)}
+        >
+          Đăng tuyển & tìm hồ sơ
+        </Link>
       </div>
     </>
   );
