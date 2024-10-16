@@ -360,15 +360,13 @@ const HeaderContent = () => {
       </div>
 
       <div
-        className={`lg:hidden bg-[#f2f2f2] py-2 px-4 ${
-          boxMenu ? "block" : "hidden"
+        className={`lg:hidden bg-[#f2f2f2] ${
+          boxMenu ? "block py-2 px-4" : "hidden"
         }} ${
           boxMenu ? styles["animate-slide-down"] : styles["animate-slide-up"]
         }`}
       >
-        <h2 className={`text-[#4d5965] text-sm mb-2 ${boxMenu ? "mt-4" : ""}`}>
-          Dành cho ứng viên
-        </h2>
+        <h2 className="text-[#4d5965] text-sm mb-2 mt-4">Dành cho ứng viên</h2>
         {itemsMobile.map((item, index) => (
           <Link
             href={item.value}
