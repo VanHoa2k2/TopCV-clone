@@ -8,7 +8,7 @@ export default function AuthLayout({
 }>) {
   return (
     <div className="flex justify-between">
-      <div className="flex justify-center mt-[60px] w-full">
+      <div className="flex justify-center mt-[60px] w-full px-2 lg:px-0">
         <div className="w-[600px]">
           <HeaderContent />
           {children}
@@ -19,7 +19,7 @@ export default function AuthLayout({
           </div>
         </div>
       </div>
-      <div className="min-w-[500px]"></div>
+      <div className="hidden lg:block min-w-[500px]"></div>
       <BgAuth />
     </div>
   );

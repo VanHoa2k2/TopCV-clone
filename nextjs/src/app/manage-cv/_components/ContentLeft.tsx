@@ -57,7 +57,7 @@ const ContentLeft = () => {
   };
 
   return (
-    <div className="w-[66.66666667%] px-[15px]">
+    <div className="w-full lg:w-[66.66666667%] lg:px-[15px]">
       <div className="bg-white rounded-md shadow-[-1px_1px_6px_rgba(0,0,0,0.05)] mb-4 p-6 pb-2">
         <div className="flex items-center justify-between mb-3">
           <h1 className="text-black text-[19px] font-bold leading-6 m-0">
@@ -103,7 +103,7 @@ const ContentLeft = () => {
         </div>
         <div className="flex flex-col items-center">
           {user?.urlCV ? (
-            <div className="pt-4 pb-6 px-8 w-full">
+            <div className="pt-4 pb-6 px-0 lg:px-8 w-full">
               <h3 className="text-lg font-semibold mb-3 flex items-center">
                 <FaFile className="mr-2 text-[#00b14f] flex items-center" />
                 CV đã tải lên:

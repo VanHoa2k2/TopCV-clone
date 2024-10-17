@@ -82,17 +82,25 @@ const HeaderContent = () => {
     },
   ];
 
-  const itemsMobile = [
-    {
-      label: "Đăng kí tài khoản mới",
-      value: "/register",
-    },
-    {
-      label: "Đăng nhập",
-      value: "/login",
-    },
-    ...items,
-  ];
+  const itemsMobile = isAuthenticated
+    ? [
+        {
+          label: "Cài đặt thông tin cá nhân",
+          value: "/personal-info",
+        },
+        ...items,
+      ]
+    : [
+        {
+          label: "Đăng kí tài khoản mới",
+          value: "/register",
+        },
+        {
+          label: "Đăng nhập",
+          value: "/login",
+        },
+        ...items,
+      ];
 
   // const handleViewDetailJob = async (item: any) => {
   //   const slug = convertSlug(item.nameJob);
@@ -348,45 +356,139 @@ const HeaderContent = () => {
               </>
             )}
           </div>
-          <div
-            className="lg:hidden flex items-center justify-center rounded-full w-10 h-10 bg-[#00b14f1a] cursor-pointer"
-            onClick={() => setBoxMenu(!boxMenu)}
-          >
-            <span className="text-[22px] text-[#00b14f]">
-              {boxMenu ? <FaXmark /> : <FaBars />}
-            </span>
+          <div className="lg:hidden flex gap-2">
+            {isAuthenticated && (
+              <>
+                <Tooltip
+                  placement="bottom"
+                  title={notifications}
+                  arrow={false}
+                  trigger="click"
+                  color="#fff"
+                  overlayStyle={{ maxWidth: "400px" }}
+                  open={isOpenNotifyTooltip}
+                  onOpenChange={() => setIsOpenNotifyTooltip(false)}
+                >
+                  <div
+                    className="bg-[#00b14f1a] rounded-full cursor-pointer relative"
+                    onClick={() => setIsOpenNotifyTooltip(!isOpenNotifyTooltip)}
+                  >
+                    <FaBell
+                      className="w-10 h-10 p-[10px] text-primary"
+                      type="button"
+                      onMouseEnter={() => {}}
+                      onMouseLeave={() => {}}
+                    />
+                    {notifiesBadge?.length > 0 && (
+                      <span className="absolute top-[-16%] right-[-18%] w-[22px] h-[22px] bg-[#f4eaea] opacity-80 text-[#393838] rounded-full flex items-center justify-center text-[14px] font-semibold z-10">
+                        {notifiesBadge?.length}
+                      </span>
+                    )}
+                  </div>
+                </Tooltip>
+
+                <Tooltip
+                  placement="bottom"
+                  title={text}
+                  trigger="click"
+                  open={isOpenChatTooltip}
+                  onOpenChange={() => setIsOpenChatTooltip(false)}
+                >
+                  <div
+                    className="bg-[#00b14f1a] rounded-full cursor-pointer"
+                    onClick={() => setIsOpenChatTooltip(!isOpenChatTooltip)}
+                  >
+                    <IoIosChatbubbles
+                      className="w-10 h-10 p-2 text-primary"
+                      type="button"
+                      onMouseEnter={() => {}}
+                      onMouseLeave={() => {}}
+                    />
+                  </div>
+                </Tooltip>
+              </>
+            )}
+            <div
+              className="flex items-center justify-center rounded-full w-10 h-10 bg-[#00b14f1a] cursor-pointer"
+              onClick={() => setBoxMenu(!boxMenu)}
+            >
+              <span className="text-[22px] text-[#00b14f]">
+                {boxMenu ? <FaXmark /> : <FaBars />}
+              </span>
+            </div>
           </div>
         </>
       </div>
 
       <div
         className={`lg:hidden bg-[#f2f2f2] ${
-          boxMenu ? "block py-2 px-4" : "hidden"
-        }} ${
           boxMenu ? styles["animate-slide-down"] : styles["animate-slide-up"]
         }`}
       >
-        <h2 className="text-[#4d5965] text-sm mb-2 mt-4">Dành cho ứng viên</h2>
-        {itemsMobile.map((item, index) => (
+        <div className="py-2 px-4">
+          {isAuthenticated ? (
+            <div className="flex gap-4 relative mb-2 bg-white rounded-[6px] py-3 px-[14px] items-center">
+              <Avatar
+                size={32}
+                src={
+                  <Image
+                    alt="avatar"
+                    width={32}
+                    height={32}
+                    src={
+                      userAccount?.avatar
+                        ? `${process.env.NEXT_PUBLIC_URL_BACKEND}/images/avatar/${userAccount?.avatar}`
+                        : AvatarDefault
+                    }
+                  />
+                }
+              ></Avatar>
+              <div className="pb-[6px]">
+                <p className="text-primary font-semibold">
+                  {userAccount?.name}
+                </p>
+                <p className="text-xs text-[#6f7882] font-normal">
+                  {userAccount?.email}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <h2 className="text-[#4d5965] text-sm mb-2 mt-4">
+              Dành cho ứng viên
+            </h2>
+          )}
+          {itemsMobile.map((item, index) => (
+            <Link
+              href={item.value}
+              key={index}
+              className="text-primary text-sm font-semibold mb-2 bg-white rounded-[6px] py-4 px-[14px] flex items-center"
+              onClick={() => setBoxMenu(!boxMenu)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          {isAuthenticated && (
+            <div
+              className="text-[red] text-sm font-semibold mb-2 bg-white rounded-[6px] py-4 px-[14px] flex items-center"
+              onClick={() => {
+                handleLogout();
+                setBoxMenu(!boxMenu);
+              }}
+            >
+              Đăng xuất
+            </div>
+          )}
+          <h2 className="text-[#4d5965] text-sm mb-2 mt-4">
+            Dành cho nhà tuyển dụng
+          </h2>
           <Link
-            href={item.value}
-            key={index}
+            href="/login-for-hr"
             className="text-primary text-sm font-semibold mb-2 bg-white rounded-[6px] py-4 px-[14px] flex items-center"
             onClick={() => setBoxMenu(!boxMenu)}
           >
-            {item.label}
+            Đăng tuyển & tìm hồ sơ
           </Link>
-        ))}
-        <h2 className="text-[#4d5965] text-sm mb-2 mt-4">
-          Dành cho nhà tuyển dụng
-        </h2>
-        <Link
-          href="/login-for-hr"
-          className="text-primary text-sm font-semibold mb-2 bg-white rounded-[6px] py-4 px-[14px] flex items-center"
-          onClick={() => setBoxMenu(!boxMenu)}
-        >
-          Đăng tuyển & tìm hồ sơ
-        </Link>
+        </div>
       </div>
     </>
   );

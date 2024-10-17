@@ -46,7 +46,7 @@ const ContentLeft = () => {
   };
 
   return (
-    <div className="w-[66.66666667%] px-[15px]">
+    <div className="w-full lg:w-[66.66666667%] lg:px-[15px]">
       <div className="bg-white rounded-lg mb-6 p-6">
         <div>
           <h4 className="text-[#212f3f] text-[18px] font-bold leading-[26px] mt-0 mb-[10px]">

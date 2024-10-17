@@ -137,19 +137,21 @@ const JobsList = ({
   return (
     <>
       <div className="flex items-center justify-between text-[#212f3f] text-[16px] pb-4">
-        <div className="text-[#00b14f] flex items-center text-2xl font-semibold gap-4">
+        <div className="w-full lg:w-auto text-[#00b14f] flex items-center justify-between lg:justify-start text-2xl font-semibold gap-4">
           <h2>Việc làm tốt nhất</h2>
-          <div className="border-l border-solid border-[#bcc1c5] pl-4">
+          <div className="lg:border-l lg:border-solid lg:border-[#bcc1c5] pl-4">
             <Image src={ToppyAl} alt="ToppyAl" width={110} height={26} />
           </div>
         </div>
-        <PaginationControls
-          currentPage={currentPage}
-          totalPages={pages}
-          hidePageNumbers={true}
-          onPrevPage={handlePrevPage}
-          onNextPage={handleNextPage}
-        />
+        <div className="hidden lg:block">
+          <PaginationControls
+            currentPage={currentPage}
+            totalPages={pages}
+            hidePageNumbers={true}
+            onPrevPage={handlePrevPage}
+            onNextPage={handleNextPage}
+          />
+        </div>
       </div>
       <FilterAndScrollableButtons
         selectedFilter={selectedFilter}
@@ -162,7 +164,7 @@ const JobsList = ({
         locations={locations}
       />
       {initialLoad && isLoading ? (
-        <div className="grid grid-cols-3 gap-5 my-[10px] pt-[2px] pb-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[10px] pt-[2px] pb-2">
           {Array(12)
             .fill(0)
             .map((_, index) => (
@@ -174,7 +176,7 @@ const JobsList = ({
           Không có việc làm nào
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-5 my-[10px] pt-[2px] pb-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[10px] pt-[2px] pb-2">
           {jobs?.map((job: IJob) => (
             <JobCard key={job.id} job={job} />
           ))}

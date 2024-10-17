@@ -11,7 +11,7 @@ const BgAuth = () => {
     <div
       className={`fixed top-0 right-0 ${
         isSpecialPage ? "bg-auth02" : "bg-auth"
-      } bg-no-repeat bg-cover bg-[0_0] min-w-[500px] h-[100vh] overflow-hidden`}
+      } hidden lg:block bg-no-repeat bg-cover bg-[0_0] min-w-[500px] h-[100vh] overflow-hidden`}
     >
       {isSpecialPage ? (
         ""

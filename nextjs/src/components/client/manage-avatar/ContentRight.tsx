@@ -129,7 +129,7 @@ const ContentRight = () => {
   };
 
   return (
-    <div className="w-[33.33333333%] px-[15px]">
+    <div className="w-full lg:w-[33.33333333%] lg:px-[15px]">
       <div className="bg-white rounded-[8px] p-4 mb-4">
         <div className="border-b border-[#eef1f5] flex gap-6 justify-start pb-4">
           <div className="relative">

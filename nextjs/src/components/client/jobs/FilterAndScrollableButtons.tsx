@@ -28,8 +28,8 @@ const FilterAndScrollableButtons: React.FC<FilterAndScrollableButtonsProps> = ({
   locations,
 }) => {
   return (
-    <div className="flex justify-between gap-5">
-      <div className="items-center bg-white border border-[#dee0e2] rounded-md grid grid-cols-[1fr_2fr] shrink-0 gap-[5px] h-[40px] text-sm font-normal leading-5 py-0 pl-[10px] pr-[7px]">
+    <div className="flex justify-between flex-wrap lg:flex-nowrap gap-5">
+      <div className="mx-auto items-center bg-white border border-[#dee0e2] rounded-md grid grid-cols-[1fr_2fr] shrink-0 gap-[5px] h-[40px] text-sm font-normal leading-5 py-0 pl-[10px] pr-[7px]">
         <span className="flex items-center gap-[10px] font-medium text-[#a6acb2]">
           <IoFilterSharp /> Lọc theo:
         </span>

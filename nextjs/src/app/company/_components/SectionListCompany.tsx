@@ -21,10 +21,10 @@ const SectionListCompany = async () => {
 
   return (
     <div className="container max-w-[1320px] px-[7.5px]">
-      <h1 className="text-center py-6 text-[#333] text-2xl font-semibold">
+      <h1 className="text-center py-6 text-[#333] text-sm lg:text-2xl font-semibold">
         DANH SÁCH CÁC CÔNG TY NỔI BẬT
       </h1>
-      <div className="grid grid-cols-3 gap-[15px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-[15px]">
         {isLoading
           ? Array.from({ length: 3 }).map((_, index) => (
               <SkeletonCompanyCard key={index} />

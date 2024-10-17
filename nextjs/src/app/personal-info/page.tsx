@@ -6,7 +6,7 @@ const PersonalInfo = () => {
   return (
     <div className="bg-[#f0f0f0]">
       <div className="container pt-6">
-        <div className="flex">
+        <div className="flex flex-wrap lg:flex-nowrap">
           <ContentLeft />
           <ContentRight />
         </div>

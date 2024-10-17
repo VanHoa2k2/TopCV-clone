@@ -61,7 +61,7 @@ const ContentLeft = () => {
 
   return (
     <div>
-      <div className="w-[542px]">
+      <div className="w-full lg:w-[542px]">
         <h4 className="text-base font-semibold mb-[9px] text-white">
           Công nghệ AI dự đoán, cá nhân hoá việc làm
         </h4>
@@ -91,7 +91,7 @@ const ContentLeft = () => {
             color="#fff"
             getPopupContainer={(triggerNode: any) => triggerNode.parentNode}
           >
-            <div className="flex items-center relative w-full h-full border-l-[1.5px] border-solid border-[#ccc]">
+            <div className="hidden lg:flex items-center relative w-full h-full border-l-[1.5px] border-solid border-[#ccc]">
               <div className="absolute top-[50%] transform -translate-y-1/2 text-[#6f7882] left-3 w-6 h-6 flex items-center z-[1px] text-[22px]">
                 <CiLocationOn />
               </div>
@@ -117,7 +117,7 @@ const ContentLeft = () => {
             alt="banner-video"
             width={540}
             height={198}
-            className="max-h-[198px] rounded-xl object-cover"
+            className="max-w-full lg:max-w-[540px] max-h-[130px] lg:max-h-[198px] rounded-xl object-cover"
             unoptimized
           />
         </div>

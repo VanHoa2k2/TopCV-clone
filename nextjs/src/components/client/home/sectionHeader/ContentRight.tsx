@@ -15,7 +15,7 @@ export default async function ContentRight() {
       await jobApiRequest.callFetchParamsOccupation();
 
     return (
-      <div className="bg-[#212f3f4d] rounded-xl px-6 py-4 w-[571px] transition-all duration-300 ease-in-out border border-solid border-transparent hover:shadow-contentRight hover:border-[#11d769]">
+      <div className="hidden lg:block bg-[#212f3f4d] rounded-xl px-6 py-4 w-[571px] transition-all duration-300 ease-in-out border border-solid border-transparent hover:shadow-contentRight hover:border-[#11d769]">
         <div className="mb-4">
           <div className="flex justify-between mb-[22px]">
             <span className="text-white flex text-[14px] leading-[22px] gap-2 tracking-[.175px] font-semibold">

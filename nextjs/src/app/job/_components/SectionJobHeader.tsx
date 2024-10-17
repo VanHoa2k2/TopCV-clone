@@ -18,7 +18,7 @@ const SectionJobHeader = async () => {
     <div className="pb-6 pt-8 bg-sectionJobHeader relative">
       <div className="container">
         <div className="text-center mb-4">
-          <h1 className="text-[30px] leading-[32px] text-[#009643] font-bold mb-[6px]">
+          <h1 className="text-[20px] leading-[28px] lg:text-[30px] lg:leading-[32px] text-[#009643] font-bold mb-[6px]">
             Tìm việc làm nhanh 24h, việc làm mới nhất trên toàn quốc.
           </h1>
           <p className="text-[#263a4d] text-xs font-normal tracking-[0.12px] leading-4 text-center mb-[10px]">
@@ -32,21 +32,21 @@ const SectionJobHeader = async () => {
         </div>
         <form
           action=""
-          className="flex items-center bg-white border border-[#e6e7e8] rounded-full shadow-[0_2px_12px_0_rgba(0,0,0,0.04)] gap-4 h-16 px-6 py-2.5 w-[1140px] mb-4 relative z-[4]"
+          className="flex items-center bg-white border border-[#e6e7e8] rounded-full shadow-[0_2px_12px_0_rgba(0,0,0,0.04)] gap-4 h-16 px-6 py-2.5 w-full lg:w-[1140px] mb-4 relative z-[4]"
         >
           <div className="flex-1 relative z-[4] flex justify-between">
             <div className="flex items-center justify-between gap-2 h-11 p-0 mx-2 relative">
               <input
                 type="text"
                 placeholder="Vị trí tuyển dụng"
-                className="bg-transparent shadow-none text-[#212f3f] text-sm font-medium leading-6 tracking-[-0.16px] p-0 w-[410px] h-full outline-none"
+                className="bg-transparent shadow-none text-[#212f3f] text-sm font-medium leading-6 tracking-[-0.16px] p-0 w-full lg:w-[410px] h-full outline-none"
               />
               <div className="cursor-pointer flex items-center justify-center w-6 h-6 bg-transparent border-none visible text-[#b3b8bd] text-xl font-normal leading-5">
                 <HiMiniXMark />
               </div>
               <span className="bg-lineJobHeader h-full absolute right-[-8px] w-[1px]"></span>
             </div>
-            <div className="px-2 relative flex items-center gap-2 mx-2 cursor-pointer w-full">
+            <div className="px-2 relative hidden lg:flex items-center gap-2 mx-2 cursor-pointer w-full">
               <div className="absolute flex items-center justify-center w-6 h-6 text-[#7f878f] text-base font-normal leading-5 text-center">
                 <IoLocationOutline />
               </div>
@@ -62,7 +62,7 @@ const SectionJobHeader = async () => {
               </div>
               <span className="bg-lineJobHeader h-full absolute right-[-8px] w-[1px]"></span>
             </div>
-            <div className="px-2 relative flex items-center gap-2 mx-2 cursor-pointer w-full">
+            <div className="px-2 relative hidden lg:flex items-center gap-2 mx-2 cursor-pointer w-full">
               <div className="absolute flex items-center justify-center w-6 h-6 text-[#7f878f] text-base font-normal leading-5 text-center">
                 <IoBriefcaseOutline />
               </div>
@@ -80,7 +80,7 @@ const SectionJobHeader = async () => {
             </div>
             <div className="pr-[2px] pl-2.5">
               <Button className="w-full flex items-center justify-center gap-2 h-11 px-5 bg-[#00b14f] text-white text-sm font-semibold leading-6 rounded-full transition duration-300">
-                <span className="text-lg">
+                <span className="hidden lg:block text-lg">
                   <HiMiniMagnifyingGlass />
                 </span>{" "}
                 Tìm kiếm
@@ -104,21 +104,21 @@ const SectionJobHeader = async () => {
       <Image
         src={bgLeft}
         alt="bg-left"
-        className="absolute top-0 left-0"
+        className="hidden lg:block absolute top-0 left-0"
         width={131}
         height={350}
       />
       <Image
         src={bgRight}
         alt="bg-right"
-        className="absolute top-0 right-0"
+        className="hidden lg:block absolute top-0 right-0"
         width={93}
         height={24}
       />
       <Image
         src={robot}
         alt="robot"
-        className="absolute right-[43.14px] top-[14px]"
+        className="hidden lg:block absolute right-[43.14px] top-[14px]"
         width={111.86}
         height={140.71}
       />

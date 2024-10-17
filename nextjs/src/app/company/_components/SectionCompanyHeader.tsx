@@ -40,7 +40,7 @@ const SectionCompanyHeader = () => {
             </button>
           </form>
         </div>
-        <div className="ml-auto">
+        <div className="hidden lg:block ml-auto">
           <Image
             src={companyBillBoard}
             alt="company-billboard"

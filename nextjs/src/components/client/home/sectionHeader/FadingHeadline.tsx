@@ -27,7 +27,7 @@ const FadingHeadline = () => {
     return () => clearInterval(interval);
   }, [textList.length]);
   return (
-    <h2 className="text-white text-[26px] font-bold leading-[38px] mb-4">
+    <h2 className="text-white text-[18px] lg:text-[26px] font-bold leading-[38px] mb-4">
       <span
         className={`text-primary transition-opacity duration-500 ${
           isFading ? "opacity-0" : "opacity-100"

@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <div className="leading-none border-t border-[#e9e4e4]">
       <div className="container py-10">
-        <div className="flex justify-between gap-[15px]">
+        <div className="flex justify-between gap-[15px] flex-wrap lg:flex-nowrap">
           <div>
             <Link href="/">
               <Image
