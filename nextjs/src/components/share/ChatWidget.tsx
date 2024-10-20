@@ -69,9 +69,10 @@ const ChatWidget = () => {
           response.forEach((botResponse: any) => {
             // Encode job name and location if present in botResponse.text
             let modifiedText = botResponse.text;
-
             // Tìm và thay thế phần URL trong botResponse.text nếu có
             const jobNameMatch = botResponse.text.match(/name=([^&]*)/);
+            console.log(jobNameMatch);
+
             const jobLocationMatch = botResponse.text.match(/location=([^&]*)/);
 
             if (jobNameMatch) {

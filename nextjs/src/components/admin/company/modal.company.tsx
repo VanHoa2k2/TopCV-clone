@@ -99,7 +99,6 @@ const ModalCompany = (props: IProps) => {
       setDataFields([]);
     }
   }, [dataInit, form]);
-  console.log(dataInit);
 
   useEffect(() => {
     if (dataInit?.id && dataInit?.logo) {

@@ -13,7 +13,9 @@ const companyApiRequest = {
     ),
 
   callFetchAllCompany: () =>
-    http.get<IBackendRes<IAllCompany>>(`/api/v1/companies/all`),
+    http.get<IBackendRes<IAllCompany>>(`/api/v1/companies/all`, {
+      cache: "no-store",
+    }),
 
   callFetchCompanyById: (id: string) =>
     http.get<IBackendRes<ICompany>>(`/api/v1/companies/${id}`),

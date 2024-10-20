@@ -12,17 +12,10 @@ import { FaCheck } from "react-icons/fa6";
 import { EXPERIENCES_LIST } from "@/lib/utils";
 import FilterAndScrollableButtons from "./FilterAndScrollableButtons";
 
-const JobsList = ({
-  initialJobsData,
-}: {
-  initialJobsData: IModelPaginate<IJob> | null;
-}) => {
+const JobsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [jobsData, setJobsData] = useState<IModelPaginate<IJob> | null>(
-    initialJobsData
-  );
-  const [isLoading, setIsLoading] = useState(false);
-  const [initialLoad, setInitialLoad] = useState(false);
+  const [jobsData, setJobsData] = useState<IModelPaginate<IJob> | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>("");
   const [selectedFilter, setSelectedFilter] = useState<{
     label: string;
@@ -50,7 +43,6 @@ const JobsList = ({
       console.error("Error fetching jobs:", error); // Xử lý lỗi
     } finally {
       setIsLoading(false);
-      setInitialLoad(false); // Set initial load to false after first fetch
     }
   };
 
@@ -163,7 +155,7 @@ const JobsList = ({
         occupations={occupations}
         locations={locations}
       />
-      {initialLoad && isLoading ? (
+      {isLoading ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[10px] pt-[2px] pb-2">
           {Array(12)
             .fill(0)
