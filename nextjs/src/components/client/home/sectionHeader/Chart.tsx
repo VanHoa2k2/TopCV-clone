@@ -5,10 +5,12 @@ import { IParamsOccupation } from "@/types/backend";
 
 interface IProps {
   occupationData: IParamsOccupation | undefined;
+  titleChart?: string;
+  heightChart?: string;
 }
 
 const Chart = (props: IProps) => {
-  const { occupationData } = props;
+  const { occupationData, heightChart, titleChart } = props;
   const chartRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -16,6 +18,7 @@ const Chart = (props: IProps) => {
       const myChart = echarts.init(chartRef.current);
 
       const option = {
+        title: titleChart ? { text: titleChart, left: "center" } : undefined,
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -78,9 +81,17 @@ const Chart = (props: IProps) => {
         myChart.dispose();
       };
     }
-  }, [occupationData]);
+  }, [occupationData, titleChart]);
 
-  return <div ref={chartRef} style={{ width: "100%", height: "177px" }}></div>;
+  return (
+    <div
+      ref={chartRef}
+      style={{
+        width: "100%",
+        height: heightChart ? heightChart : "177px",
+      }}
+    ></div>
+  );
 };
 
 export default Chart;

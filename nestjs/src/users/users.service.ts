@@ -193,6 +193,10 @@ export class UsersService {
     }
   }
 
+  async findAllUsers(): Promise<User[]> {
+    return await this.usersRepository.find({ relations: ['role'] });
+  }
+
   async update(updateUserDto: UpdateUserDto, user: IUser) {
     const {
       id,

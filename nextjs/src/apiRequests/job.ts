@@ -11,8 +11,7 @@ const jobApiRequest = {
   callFetchJob: (query: string) =>
     http.get<IBackendRes<IModelPaginate<IJob>>>(`/api/v1/jobs?${query}`),
 
-  callFetchAllJob: () =>
-    http.get<IBackendRes<IAllJob>>(`/api/v1/companies/all`),
+  callFetchAllJob: () => http.get<IBackendRes<IJob[]>>(`/api/v1/jobs/all`),
 
   callFetchJobById: (id: string) =>
     http.get<IBackendRes<IJob>>(`/api/v1/jobs/${id}`, {

@@ -48,6 +48,44 @@ export interface IUser {
   updatedAt?: string;
 }
 
+export interface IAllUser {
+  id?: number;
+  name?: string;
+  email?: string;
+  password?: string;
+  age?: number;
+  gender?: string;
+  phone?: string;
+  address?: string;
+  urlCV?: string;
+  avatar?: string | null;
+  notifies?: {
+    id: number;
+    status?: string;
+    title?: string;
+    description?: string;
+    isActive?: boolean;
+    jobId?: number;
+    nameJob?: string;
+    createdAt?: string;
+  }[];
+  role?: {
+    id: number;
+    name?: string;
+  };
+
+  company?: {
+    id: number;
+    name?: string;
+  };
+  createdBy?: string;
+  isDeleted?: boolean;
+  deletedAt?: boolean | null;
+  createdAt?: string;
+  updatedAt?: string;
+}
+[];
+
 export interface IAccount {
   access_token: string;
   accessTokenExpires: string;

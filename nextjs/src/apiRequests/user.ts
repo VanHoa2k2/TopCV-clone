@@ -1,5 +1,5 @@
 import http from "@/lib/http";
-import { IBackendRes, IModelPaginate, IUser } from "@/types/backend";
+import { IAllUser, IBackendRes, IModelPaginate, IUser } from "@/types/backend";
 
 const userApiRequest = {
   callFetchUser: (query: string) =>
@@ -7,6 +7,8 @@ const userApiRequest = {
 
   callFetchUserById: (id: number) =>
     http.get<IBackendRes<IUser>>(`/api/v1/users/${id}`),
+
+  callFetchAllUser: () => http.get<IBackendRes<IUser[]>>(`/api/v1/users/all`),
 
   callCreateUser: (user: IUser) =>
     http.post<IBackendRes<IUser>>(`/api/v1/users`, user),
