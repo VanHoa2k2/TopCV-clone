@@ -92,4 +92,9 @@ export class RegisterUserDto {
   @ValidateNested()
   @Type(() => Role)
   role: Role;
+
+  @Allow()
+  @ValidateNested()
+  @Type(() => Company)
+  company?: Company;
 }

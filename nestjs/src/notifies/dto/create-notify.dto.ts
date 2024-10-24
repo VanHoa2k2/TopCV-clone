@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer';
-import { IsNotEmpty } from 'class-validator';
+import { Allow, IsNotEmpty } from 'class-validator';
 import { User } from 'src/users/entities/user.entity';
 
 export class CreateNotifyDto {
@@ -14,13 +14,13 @@ export class CreateNotifyDto {
   @IsNotEmpty({ message: 'Description không được để trống' })
   description: string;
 
-  @IsNotEmpty({ message: 'IsActive không được để trống' })
+  @Allow()
   isActive: boolean;
 
-  @IsNotEmpty({ message: 'JobId không được để trống' })
+  @Allow()
   jobId: number;
 
-  @IsNotEmpty({ message: 'NameJob không được để trống' })
+  @Allow()
   nameJob: string;
 
   @IsNotEmpty({ message: 'User không được để trống' })

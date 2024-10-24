@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 
 const BgAuth = () => {
   const pathname = usePathname();
-  const isSpecialPage = pathname === "/login-for-hr";
+  const isSpecialPage =
+    pathname === "/login-for-hr" || pathname === "/register-for-hr";
   return (
     <div
       className={`fixed top-0 right-0 ${

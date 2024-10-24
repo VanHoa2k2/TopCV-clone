@@ -87,6 +87,16 @@ export interface IAccount {
   };
 }
 
+export interface IRegisterForHR {
+  email: string;
+  name: string;
+  password: string;
+  confirmPassword: string;
+  company: {
+    id: number;
+  };
+}
+
 export interface IGetAccount extends Omit<IAccount, "access_token"> {}
 
 export interface IModelPaginate<T> {

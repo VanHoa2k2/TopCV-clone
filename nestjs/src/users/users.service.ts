@@ -27,7 +27,7 @@ export class UsersService {
   };
 
   async register(user: RegisterUserDto) {
-    const { name, email, password, address, age, gender, role } = user;
+    const { name, email, password, address, age, gender, role, company } = user;
     //add logic check email
     const isExist = await this.usersRepository.findOne({ where: { email } });
     if (isExist) {
@@ -46,6 +46,9 @@ export class UsersService {
       address,
       role: {
         id: role?.id,
+      },
+      company: {
+        id: company?.id,
       },
     });
 

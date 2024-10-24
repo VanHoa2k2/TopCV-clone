@@ -2,11 +2,13 @@ import http from "@/lib/http";
 import {
   LoginBodyType,
   RegisterBodyType,
+  RegisterForHRBodyType,
 } from "@/schemaValidations/auth.schema";
 import {
   AccessTokenResponse,
   IAccount,
   IBackendRes,
+  IRegisterForHR,
   IUser,
 } from "@/types/backend";
 
@@ -21,6 +23,13 @@ const authApiRequest = {
       ...body,
       role: {
         id: 2,
+      },
+    }),
+  registerForHR: (body: IRegisterForHR) =>
+    http.post<IBackendRes<IUser>>("/api/v1/auth/register", {
+      ...body,
+      role: {
+        id: 3,
       },
     }),
   logoutFromNextServerToServer: (access_token: string) =>

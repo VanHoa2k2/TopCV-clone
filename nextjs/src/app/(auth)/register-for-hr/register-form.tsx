@@ -12,38 +12,64 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
-  registerBody,
-  RegisterBodyType,
+  registerForHRBody,
+  RegisterForHRBodyType,
 } from "@/schemaValidations/auth.schema";
 import { Checkbox } from "@/components/ui/checkbox";
 import { message, notification } from "antd";
 import authApiRequest from "@/apiRequests/auth";
 import { useRouter } from "next/navigation";
 import notifyApiRequest from "@/apiRequests/notify";
+import companyApiRequest from "@/apiRequests/company";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { IAllCompany, ICompany } from "@/types/backend";
 
 const RegisterForm = () => {
   const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>(true);
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
+  const [companies, setCompanies] = useState<ICompany[]>([]);
+  const [companyId, setCompanyId] = useState<number | undefined>(undefined);
+  console.log(companyId);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   const router = useRouter();
 
-  const form = useForm<RegisterBodyType>({
-    resolver: zodResolver(registerBody),
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      const res = await companyApiRequest.callFetchAllCompany();
+      if (res && res.data) setCompanies(res.data as unknown as ICompany[]);
+    };
+    fetchCompanies();
+  }, []);
+
+  const form = useForm<RegisterForHRBodyType>({
+    resolver: zodResolver(registerForHRBody),
     defaultValues: {
       name: "",
       email: "",
       password: "",
       confirmPassword: "",
+      company: "",
     },
   });
 
-  async function onSubmit(values: RegisterBodyType) {
+  async function onSubmit(values: RegisterForHRBodyType) {
     if (isSubmit) return;
     setIsSubmit(true);
     if (isTermsAccepted) {
-      const res = await authApiRequest.register(values);
+      const res = await authApiRequest.registerForHR({
+        ...values,
+        company: { id: companyId as number },
+      });
       setIsSubmit(false);
       if (res?.data?.id) {
         message.success("Đăng ký tài khoản thành công!");
@@ -54,7 +80,7 @@ const RegisterForm = () => {
             "Chào mừng bạn đến với website TopCV, hãy upload cv để được gợi ý những việc làm phù hợp nhé!^^",
           user: res?.data?.id,
         });
-        router.push("/login");
+        router.push("/login-for-hr");
       } else {
         notification.error({
           message: "Có lỗi xảy ra",
@@ -163,6 +189,57 @@ const RegisterForm = () => {
                   />
                 </FormControl>
               </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="company"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Thuộc công ty</FormLabel>
+              <Select
+                onValueChange={(value) => {
+                  setCompanyId(
+                    companies.find((company) => company.name === value)?.id
+                  );
+                  field.onChange(value);
+                }}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue
+                      placeholder="Chọn công ty của bạn"
+                      defaultValue={field.value}
+                    />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <Input
+                    placeholder="Tìm kiếm công ty..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="mb-2"
+                  />
+                  {companies
+                    .filter(
+                      (company) =>
+                        company.name &&
+                        company.name
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase())
+                    )
+                    .map((company) => (
+                      <SelectItem
+                        key={company.id}
+                        value={company.name as unknown as string}
+                      >
+                        {company.name}
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

@@ -30,7 +30,8 @@ function AppContent(props: IProps) {
     pathname.startsWith("/admin") ||
     pathname === "/login" ||
     pathname === "/login-for-hr" ||
-    pathname === "/register";
+    pathname === "/register" ||
+    pathname === "/register-for-hr";
 
   return isClient && !isSpecialPage ? (
     <div className="layout-app" ref={rootRef}>
