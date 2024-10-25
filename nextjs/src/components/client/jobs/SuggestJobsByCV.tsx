@@ -1,10 +1,7 @@
-import { cookies } from "next/headers";
 import JobSuggestionList from "./JobSuggestionList";
 
 const SuggestJobsByCV = () => {
-  const cookieStore = cookies();
-  const access_token = cookieStore.get("access_token");
-
+  const access_token = localStorage.getItem("access_token");
   if (!access_token) {
     return <></>;
   }
