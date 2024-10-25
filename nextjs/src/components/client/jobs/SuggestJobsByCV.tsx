@@ -1,3 +1,4 @@
+"use client";
 import { useAppSelector } from "@/redux/hooks";
 import JobSuggestionList from "./JobSuggestionList";
 
