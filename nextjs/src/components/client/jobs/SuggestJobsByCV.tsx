@@ -1,8 +1,11 @@
+import { useAppSelector } from "@/redux/hooks";
 import JobSuggestionList from "./JobSuggestionList";
 
 const SuggestJobsByCV = () => {
-  const access_token = localStorage.getItem("access_token");
-  if (!access_token) {
+  const isAuthenticated = useAppSelector(
+    (state) => state?.account?.isAuthenticated
+  );
+  if (!isAuthenticated) {
     return <></>;
   }
 
