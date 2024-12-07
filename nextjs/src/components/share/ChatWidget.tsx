@@ -284,7 +284,7 @@ const ChatWidget = () => {
       {isOpen ? (
         <div
           ref={chatRef}
-          className={`h-[700px] w-[350px] bg-primary rounded-xl shadow-xl flex flex-col transition-all transform duration-300 ease-in-out ${
+          className={`h-[520px] w-[350px] bg-primary rounded-xl shadow-xl flex flex-col transition-all transform duration-300 ease-in-out ${
             isOpen ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
           }`}
         >
