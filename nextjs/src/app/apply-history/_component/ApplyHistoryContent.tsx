@@ -7,22 +7,30 @@ import Link from "next/link";
 import Image from "next/image";
 import Banner from "@/assets/images/Banner-job-search.webp";
 import Report from "@/assets/images/recruiment_report_2023_2024.webp";
+
 const ApplyHistoryContent = () => {
   const [resumes, setResumes] = useState<IResume[] | undefined>([]);
-  const access_token = localStorage?.getItem("access_token");
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Lấy access_token từ localStorage chỉ khi đang ở client
+    setAccessToken(localStorage?.getItem("access_token"));
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const res = await resumeApiRequest.callFetchResumeByUser(
-          access_token as unknown as string
-        );
-        setResumes(res?.data);
-      } catch (error) {
-        console.log(error);
+      if (accessToken) {
+        try {
+          const res = await resumeApiRequest.callFetchResumeByUser(accessToken);
+          setResumes(res?.data);
+        } catch (error) {
+          console.log(error);
+        }
       }
     };
     fetchData();
-  }, [access_token]);
+  }, [accessToken]);
+
   return (
     <div className="container">
       <div className="flex pb-10 gap-5">
