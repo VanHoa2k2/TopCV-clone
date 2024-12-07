@@ -13,6 +13,9 @@ const jobApiRequest = {
 
   callFetchAllJob: () => http.get<IBackendRes<IJob[]>>(`/api/v1/jobs/all`),
 
+  callFetchAllJobForHR: (companyId: number) =>
+    http.get<IBackendRes<IJob[]>>(`/api/v1/jobs/allForHR/${companyId}`),
+
   callFetchJobById: (id: string) =>
     http.get<IBackendRes<IJob>>(`/api/v1/jobs/${id}`, {
       cache: "no-store",

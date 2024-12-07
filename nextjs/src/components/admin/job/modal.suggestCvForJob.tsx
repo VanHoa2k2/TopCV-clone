@@ -82,7 +82,7 @@ const ModalSuggestCvFor = (props: IProps) => {
     let title = "";
     let description = "";
     switch (newStatus) {
-      case "REVIEWING":
+      case "Chưa giải quyết":
         title = "Nhà tuyển dụng vừa xem CV ứng tuyển của bạn";
         description = `${user?.name}, ${resume?.company?.name} vừa xem CV ứng tuyển của bạn`;
         break;
@@ -161,7 +161,7 @@ const ModalSuggestCvFor = (props: IProps) => {
           onChange={(newStatus) => handleChangeStatus(newStatus, record)}
         >
           <Option value="PENDING">PENDING</Option>
-          <Option value="REVIEWING">REVIEWING</Option>
+          <Option value="Chưa giải quyết">Chưa giải quyết</Option>
           <Option value="APPROVED">APPROVED</Option>
           <Option value="REJECTED">REJECTED</Option>
         </Select>

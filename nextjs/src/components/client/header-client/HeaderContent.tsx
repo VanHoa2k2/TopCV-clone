@@ -18,7 +18,7 @@ import AvatarDefault from "@/assets/avatar/avatar-default.jpg";
 import NoNotification from "@/assets/images/no-notification-image.jpg";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { FormOutlined } from "@ant-design/icons";
+import { FormOutlined, HistoryOutlined } from "@ant-design/icons";
 import authApiRequest from "@/apiRequests/auth";
 import { setLogoutAction } from "@/redux/slice/accountSlide";
 import { usePathname } from "next/navigation";
@@ -197,6 +197,17 @@ const HeaderContent = () => {
             <FormOutlined />
           </span>
           Cài đặt thông tin cá nhân
+        </Link>
+      </div>
+      <div className="bg-[#f4f5f5] rounded-[6px] min-w-[300px] my-2">
+        <Link
+          href="/apply-history"
+          className="flex items-center text-[#212f3f] text-sm font-medium px-[10px] py-[14px] hover:text-primary"
+        >
+          <span className="text-[#00b14f] pr-4 w-[30px] text-[15px]">
+            <HistoryOutlined />
+          </span>
+          Việc làm đã ứng tuyển
         </Link>
       </div>
       <div className="bg-[#f4f5f5] rounded-[6px] min-w-[300px] my-2">

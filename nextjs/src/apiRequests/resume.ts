@@ -12,11 +12,18 @@ const resumeApiRequest = {
       jobId,
     }),
 
+  callFetchAllResumeForHR: (companyId: number) =>
+    http.get<IBackendRes<IResume[]>>(`/api/v1/resumes/allForHR/${companyId}`),
+
   UploadCVByUser: (url: string) =>
     http.post<IBackendRes<IResume>>(`/api/v1/resumes/upload-cv`, url),
 
-  callFetchResumeByUser: () =>
-    http.post<IBackendRes<IResume>>(`/api/v1/resumes/by-user`, {}),
+  callFetchResumeByUser: (access_token: string) =>
+    http.post<IBackendRes<IResume[]>>(`/api/v1/resumes/by-user`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }),
 
   callUpdateResumeStatus: (id: number, status: string) =>
     http.patch<IBackendRes<IResume>>(`/api/v1/resumes/${id}`, { status }),

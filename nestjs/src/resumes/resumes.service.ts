@@ -145,6 +145,16 @@ export class ResumesService {
     };
   }
 
+  async findAllResumesForHR(companyId: number): Promise<Resume[]> {
+    return await this.resumeRepository.find({
+      where: {
+        company: {
+          id: companyId,
+        },
+      },
+    });
+  }
+
   async findOne(id: number) {
     const resume = await this.resumeRepository.findOne({
       where: { id },
@@ -289,6 +299,7 @@ export class ResumesService {
 
     // console.log('jobId', jobId);
     // console.log('job', job.id);
+
     result.map((resume) => {
       resume.company = {
         id: resume.company.id,
@@ -305,8 +316,9 @@ export class ResumesService {
         id: resume.createdBy.id,
         name: resume.createdBy.name,
       } as any;
+
+      console.log(resume);
     });
-    // console.log('result', result);
 
     const publicDir = join(__dirname, '..', '..', 'public');
     const pdfExtract = new PDFExtract();

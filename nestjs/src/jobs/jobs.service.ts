@@ -153,6 +153,16 @@ export class JobsService {
     return await this.jobRepository.find();
   }
 
+  async findAllJobsForHR(companyId: number): Promise<Job[]> {
+    return await this.jobRepository.find({
+      where: {
+        company: {
+          id: companyId,
+        },
+      },
+    });
+  }
+
   async getParamsOccupation() {
     const topOccupations = await this.jobRepository
       .createQueryBuilder('job')
@@ -371,14 +381,6 @@ export class JobsService {
               });
             });
 
-            // Process job level
-            if (job.level) {
-              const levelLowerCase = job.level.toLowerCase();
-              tfidf.tfidfs(levelLowerCase, (i, measure) => {
-                measures.push({ measure });
-              });
-            }
-
             // Calculate total measure for the job
             const totalMeasures = measures.reduce(
               (total, currentValue) => total + currentValue.measure,
@@ -389,13 +391,13 @@ export class JobsService {
               resultFinal.push({ ...job, totalMeasures });
             }
           });
-
           // Sắp xếp job có độ phù hợp với cv theo measure từ cao tới thấp
           resultFinal.sort(function (a, b) {
             return b.totalMeasures - a.totalMeasures;
           });
 
           resultFinal.forEach((job) => {
+            console.log(job.name, job.totalMeasures);
             delete job.totalMeasures;
           });
           resolve(resultFinal);

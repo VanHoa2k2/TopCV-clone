@@ -130,8 +130,8 @@ const ViewDetailResume = (props: IProps) => {
                   style={{ width: "100%" }}
                   defaultValue={dataInit?.status}
                 >
-                  <Option value="PENDING">PENDING</Option>
-                  <Option value="REVIEWING">REVIEWING</Option>
+                  <Option value="Chưa giải quết">Chưa giải quết</Option>
+                  <Option value="Đang xém xét">Đang xém xét</Option>
                   <Option value="APPROVED">APPROVED</Option>
                   <Option value="REJECTED">REJECTED</Option>
                 </Select>

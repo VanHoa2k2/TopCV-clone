@@ -98,6 +98,14 @@ const ViewResumesSuggestion = (props: any) => {
         title = "NTD vừa đánh giá CV của bạn";
         description = `${user?.name}, ${resume?.company?.name} vừa đánh giá CV của bạn là chưa phù hợp`;
         break;
+      case "Trúng tuyển":
+        title = "NTD vừa đánh giá CV của bạn";
+        description = `${user?.name}, ${resume?.company?.name} thông báo bạn đã trúng tuyển việc làm ${resume?.job?.name}`;
+        break;
+      case "Chưa trúng tuyển":
+        title = "NTD vừa đánh giá CV của bạn";
+        description = `${user?.name}, ${resume?.company?.name} thông báo bạn chưa trúng tuyển việc làm ${resume?.job?.name}`;
+        break;
     }
 
     const res = await resumeApiRequest.callUpdateResumeStatus(
@@ -214,7 +222,7 @@ const ViewResumesSuggestion = (props: any) => {
       ),
     },
     {
-      title: "Trạng Thái tuyển dụng",
+      title: "Trạng thái tuyển dụng",
       dataIndex: "status",
       width: 120,
       render: (status, record) => (

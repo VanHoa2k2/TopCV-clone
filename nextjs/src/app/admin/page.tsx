@@ -8,18 +8,28 @@ import {
   IAllJob,
   IAllUser,
   IBackendRes,
+  IJob,
   IParamsOccupation,
   IUser,
 } from "@/types/backend";
 import { Card, Col, Row, Statistic } from "antd";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import * as echarts from "echarts"; // Thêm import cho ECharts
+import * as echarts from "echarts";
 import Chart from "@/components/client/home/sectionHeader/Chart";
+import { useAppSelector } from "@/redux/hooks";
+import resumeApiRequest from "@/apiRequests/resume";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 const Admin = () => {
+  const user = useAppSelector((state) => state?.account?.user);
+  const isHrRole = user.role.name === "HR";
   const [userTotal, setUserTotal] = useState<number>();
   const [jobTotal, setJobTotal] = useState<number>();
+  const [jobExpiredTotal, setJobExpiredTotal] = useState([]);
+  const [resumeTotal, setResumeTotal] = useState<number>();
   const [companyTotal, setCompanyTotal] = useState<number>();
   const [occupations, setOccupations] = useState<IParamsOccupation>();
   const [userRoles, setUserRoles] = useState<{ [key: string]: number }>({
@@ -31,7 +41,25 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       const users = await userApiRequest.callFetchAllUser();
-      const jobs = await jobApiRequest.callFetchAllJob();
+      let jobs;
+      if (isHrRole) {
+        jobs = await jobApiRequest.callFetchAllJobForHR(
+          user?.company?.id as number
+        );
+        let resumes = await resumeApiRequest.callFetchAllResumeForHR(
+          user?.company?.id as number
+        );
+        setResumeTotal(resumes?.data?.length);
+        let jobExpired: any = [];
+        jobs?.data?.map((job: IJob) => {
+          if (dayjs().isAfter(dayjs(job?.endDate))) {
+            jobExpired.push(job);
+          }
+        });
+        setJobExpiredTotal(jobExpired);
+      } else {
+        jobs = await jobApiRequest.callFetchAllJob();
+      }
       const companies = await companyApiRequest.callFetchAllCompany();
       setUserTotal(users?.data?.length);
       setJobTotal(jobs?.data?.length);
@@ -141,21 +169,43 @@ const Admin = () => {
 
   return (
     <Row gutter={[20, 20]}>
-      <Col span={24} md={8}>
-        <Card title="Tổng người dùng" bordered={false}>
-          <Statistic value={userTotal} formatter={formatter} />
-        </Card>
-      </Col>
-      <Col span={24} md={8}>
-        <Card title="Tổng việc làm" bordered={false}>
-          <Statistic value={jobTotal} formatter={formatter} />
-        </Card>
-      </Col>
-      <Col span={24} md={8}>
-        <Card title="Tổng công ty" bordered={false}>
-          <Statistic value={companyTotal} formatter={formatter} />
-        </Card>
-      </Col>
+      {isHrRole ? (
+        <>
+          <Col span={24} md={8}>
+            <Card title="Tổng tin tuyển dụng" bordered={false}>
+              <Statistic value={jobTotal} formatter={formatter} />
+            </Card>
+          </Col>
+          <Col span={24} md={8}>
+            <Card title="Tin tuyển dụng hết hạn" bordered={false}>
+              <Statistic value={jobExpiredTotal.length} formatter={formatter} />
+            </Card>
+          </Col>
+          <Col span={24} md={8}>
+            <Card title="Ứng viên ứng tuyển" bordered={false}>
+              <Statistic value={resumeTotal} formatter={formatter} />
+            </Card>
+          </Col>
+        </>
+      ) : (
+        <>
+          <Col span={24} md={8}>
+            <Card title="Tổng người dùng" bordered={false}>
+              <Statistic value={userTotal} formatter={formatter} />
+            </Card>
+          </Col>
+          <Col span={24} md={8}>
+            <Card title="Tổng việc làm" bordered={false}>
+              <Statistic value={jobTotal} formatter={formatter} />
+            </Card>
+          </Col>
+          <Col span={24} md={8}>
+            <Card title="Tổng công ty" bordered={false}>
+              <Statistic value={companyTotal} formatter={formatter} />
+            </Card>
+          </Col>
+        </>
+      )}
       <Col span={24} md={12}>
         <div id="userChart" style={{ height: "400px" }} />
       </Col>

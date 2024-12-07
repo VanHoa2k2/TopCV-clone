@@ -43,6 +43,13 @@ export class JobsController {
   }
 
   @Public()
+  @Get('allForHR/:companyId')
+  @ResponseMessage('Fetch all job for hr')
+  findAllJobsForHR(@Param('companyId') companyId: number) {
+    return this.jobsService.findAllJobsForHR(companyId);
+  }
+
+  @Public()
   @Get('get-param-occupation')
   @ResponseMessage('Get param occupation')
   getParamsOccupation() {

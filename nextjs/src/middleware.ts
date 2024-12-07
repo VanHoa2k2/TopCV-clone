@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const privatePaths = ["/admin", "/personal-info", "/manage-cv"];
+const privatePaths = [
+  "/admin",
+  "/personal-info",
+  "/manage-cv",
+  "/apply-history",
+];
 const authPaths = ["/login", "/register"];
 const authHrPaths = ["/login-for-hr"];
 

@@ -27,6 +27,7 @@ interface NavbarAdminProps {
 
 const NavbarAdmin = (props: NavbarAdminProps) => {
   const { collapsed, setCollapsed } = props;
+  const user = useAppSelector((state) => state?.account?.user);
   // let isMobile = window.matchMedia("(max-width: 600px)").matches;
   const [activeMenu, setActiveMenu] = useState<string>("");
   const [menuItems, setMenuItems] = useState<MenuProps["items"]>([]);
@@ -201,7 +202,7 @@ const NavbarAdmin = (props: NavbarAdminProps) => {
             onMouseEnter={() => {}}
             onMouseLeave={() => {}}
           />{" "}
-          ADMIN
+          {user.role.name === "HR" ? "Employer" : "ADMIN"}
         </div>
         <Menu
           selectedKeys={[activeMenu]}

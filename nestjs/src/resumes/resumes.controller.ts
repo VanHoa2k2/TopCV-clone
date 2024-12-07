@@ -40,6 +40,13 @@ export class ResumesController {
     return this.resumesService.findAll(+currentPage, +limit, qs);
   }
 
+  @Public()
+  @Get('allForHR/:companyId')
+  @ResponseMessage('Fetch all resume for hr')
+  findAllJobsForHR(@Param('companyId') companyId: number) {
+    return this.resumesService.findAllResumesForHR(companyId);
+  }
+
   @Get(':id')
   @ResponseMessage('Fetch a resume by id')
   findOne(@Param('id') id: number) {
