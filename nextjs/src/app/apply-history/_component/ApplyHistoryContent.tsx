@@ -9,7 +9,7 @@ import Banner from "@/assets/images/Banner-job-search.webp";
 import Report from "@/assets/images/recruiment_report_2023_2024.webp";
 const ApplyHistoryContent = () => {
   const [resumes, setResumes] = useState<IResume[] | undefined>([]);
-  const access_token = localStorage.getItem("access_token");
+  const access_token = localStorage?.getItem("access_token");
   useEffect(() => {
     const fetchData = async () => {
       try {
