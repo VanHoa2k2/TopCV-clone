@@ -13,7 +13,9 @@ import robot from "@/assets/images/robot.webp";
 import Image from "next/image";
 
 const SectionJobHeader = async () => {
-  const { data: totalJobs } = await jobApiRequest.callFetchTotalJobs();
+  const { data: totalJobs } = await jobApiRequest.callFetchTotalJobs({
+    cache: "no-store",
+  });
   return (
     <div className="pb-6 pt-8 bg-sectionJobHeader relative">
       <div className="container">

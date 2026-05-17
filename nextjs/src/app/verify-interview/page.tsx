@@ -11,7 +11,9 @@ const verifyInterview = async ({ searchParams }: IProps) => {
   const token = searchParams.token;
   const nameJob = searchParams.nameJob;
 
-  const res = await resumeApiRequest.callConfirmInterview(token);
+  const res = await resumeApiRequest.callConfirmInterview(token, {
+    cache: "no-store",
+  });
 
   return (
     <div className="container mx-auto py-8">

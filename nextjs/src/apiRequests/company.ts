@@ -1,4 +1,4 @@
-import http from "@/lib/http";
+import http, { CustomOptions } from "@/lib/http";
 import {
   IAllCompany,
   IBackendRes,
@@ -7,13 +7,14 @@ import {
 } from "@/types/backend";
 
 const companyApiRequest = {
-  callFetchCompany: (query: string) =>
+  callFetchCompany: (query: string, options?: Omit<CustomOptions, "body">) =>
     http.get<IBackendRes<IModelPaginate<ICompany>>>(
-      `/api/v1/companies?${query}`
+      `/api/v1/companies?${query}`,
+      options
     ),
 
-  callFetchAllCompany: () =>
-    http.get<IBackendRes<ICompany[]>>(`/api/v1/companies/all`),
+  callFetchAllCompany: (options?: Omit<CustomOptions, "body">) =>
+    http.get<IBackendRes<ICompany[]>>(`/api/v1/companies/all`, options),
 
   callFetchCompanyById: (id: string) =>
     http.get<IBackendRes<ICompany>>(`/api/v1/companies/${id}`),

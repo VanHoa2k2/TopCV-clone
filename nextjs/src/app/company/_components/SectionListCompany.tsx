@@ -10,7 +10,9 @@ import SkeletonCompanyCard from "./SkeletonCompanyCard";
 const SectionListCompany = async () => {
   let companies: IAllCompany[];
   try {
-    const response = await companyApiRequest.callFetchAllCompany();
+    const response = await companyApiRequest.callFetchAllCompany({
+      cache: "no-store",
+    });
     companies = response.data as unknown as IAllCompany[];
   } catch (error) {
     console.error("Error fetching companies:", error); // Xử lý lỗi

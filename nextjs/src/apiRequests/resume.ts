@@ -1,45 +1,46 @@
-import http from "@/lib/http";
+import http, { CustomOptions } from "@/lib/http";
 import { IBackendRes, IModelPaginate, IResume } from "@/types/backend";
 
 const resumeApiRequest = {
-  callFetchResume: (query: string) =>
-    http.get<IBackendRes<IModelPaginate<IResume>>>(`/api/v1/resumes?${query}`),
+  callFetchResume: (query: string, options?: Omit<CustomOptions, "body">) =>
+    http.get<IBackendRes<IModelPaginate<IResume>>>(`/api/v1/resumes?${query}`, options),
 
-  callCreateResume: (url: string | undefined, companyId: any, jobId: any) =>
+  callCreateResume: (url: string | undefined, companyId: any, jobId: any, options?: Omit<CustomOptions, "body">) =>
     http.post<IBackendRes<IResume>>(`/api/v1/resumes`, {
       url,
       companyId,
       jobId,
-    }),
+    }, options),
 
-  callFetchAllResumeForHR: (companyId: number) =>
-    http.get<IBackendRes<IResume[]>>(`/api/v1/resumes/allForHR/${companyId}`),
+  callFetchAllResumeForHR: (companyId: number, options?: Omit<CustomOptions, "body">) =>
+    http.get<IBackendRes<IResume[]>>(`/api/v1/resumes/allForHR/${companyId}`, options),
 
-  UploadCVByUser: (url: string) =>
-    http.post<IBackendRes<IResume>>(`/api/v1/resumes/upload-cv`, url),
+  UploadCVByUser: (url: string, options?: Omit<CustomOptions, "body">) =>
+    http.post<IBackendRes<IResume>>(`/api/v1/resumes/upload-cv`, url, options),
 
-  callFetchResumeByUser: (access_token: string) =>
+  callFetchResumeByUser: (access_token: string, options?: Omit<CustomOptions, "body">) =>
     http.post<IBackendRes<IResume[]>>(`/api/v1/resumes/by-user`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }),
+    }, options),
 
-  callUpdateResumeStatus: (id: number, status: string) =>
-    http.patch<IBackendRes<IResume>>(`/api/v1/resumes/${id}`, { status }),
+  callUpdateResumeStatus: (id: number, status: string, options?: Omit<CustomOptions, "body">) =>
+    http.patch<IBackendRes<IResume>>(`/api/v1/resumes/${id}`, { status }, options),
 
-  callDeleteResume: (id: number) =>
-    http.delete<IBackendRes<IResume>>(`/api/v1/resumes/${id}`),
+  callDeleteResume: (id: number, options?: Omit<CustomOptions, "body">) =>
+    http.delete<IBackendRes<IResume>>(`/api/v1/resumes/${id}`, options),
 
-  callFetchResumeSuggest: (query: string, jobId: number | undefined) =>
+  callFetchResumeSuggest: (query: string, jobId: number | undefined, options?: Omit<CustomOptions, "body">) =>
     http.post<IBackendRes<IModelPaginate<IResume>>>(
       `/api/v1/resumes/fetch-resumes-suggest?${query}`,
-      { jobId }
+      { jobId },
+      options
     ),
-  callConfirmInterview: (token: string) =>
+  callConfirmInterview: (token: string, options?: Omit<CustomOptions, "body">) =>
     http.post<IBackendRes<IResume>>(`/api/v1/resumes/confirm-interview`, {
       token,
-    }),
+    }, options),
 };
 
 export default resumeApiRequest;

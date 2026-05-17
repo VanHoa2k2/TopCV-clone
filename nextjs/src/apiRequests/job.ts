@@ -1,4 +1,4 @@
-import http from "@/lib/http";
+import http, { CustomOptions } from "@/lib/http";
 import {
   IBackendRes,
   IModelPaginate,
@@ -8,26 +8,28 @@ import {
 } from "@/types/backend";
 
 const jobApiRequest = {
-  callFetchJob: (query: string) =>
-    http.get<IBackendRes<IModelPaginate<IJob>>>(`/api/v1/jobs?${query}`),
+  callFetchJob: (query: string, options?: Omit<CustomOptions, "body">) =>
+    http.get<IBackendRes<IModelPaginate<IJob>>>(`/api/v1/jobs?${query}`, options),
 
   callFetchAllJob: () => http.get<IBackendRes<IJob[]>>(`/api/v1/jobs/all`),
 
   callFetchAllJobForHR: (companyId: number) =>
     http.get<IBackendRes<IJob[]>>(`/api/v1/jobs/allForHR/${companyId}`),
 
-  callFetchJobById: (id: string) =>
+  callFetchJobById: (id: string, options?: Omit<CustomOptions, "body">) =>
     http.get<IBackendRes<IJob>>(`/api/v1/jobs/${id}`, {
       cache: "no-store",
+      ...options,
     }),
 
-  callFetchParamsOccupation: () =>
+  callFetchParamsOccupation: (options?: Omit<CustomOptions, "body">) =>
     http.get<IBackendRes<IParamsOccupation>>(
-      `/api/v1/jobs/get-param-occupation`
+      `/api/v1/jobs/get-param-occupation`,
+      options
     ),
 
-  callFetchTotalJobs: () =>
-    http.get<IBackendRes<number>>(`/api/v1/jobs/get-total-jobs`),
+  callFetchTotalJobs: (options?: Omit<CustomOptions, "body">) =>
+    http.get<IBackendRes<number>>(`/api/v1/jobs/get-total-jobs`, options),
 
   callCreateJob: (job: IJob) =>
     http.post<IBackendRes<IJob>>(`/api/v1/jobs`, job),

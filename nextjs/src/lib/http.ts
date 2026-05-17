@@ -48,7 +48,7 @@ let refreshTokenPromise: Promise<AccessTokenResponse | null> | null = null; // B
 //   return refreshTokenPromise;
 // };
 
-type CustomOptions = Omit<RequestInit, "method"> & {
+export type CustomOptions = Omit<RequestInit, "method"> & {
   baseUrl?: string | undefined;
 };
 
@@ -184,15 +184,14 @@ const request = async <Response>(
           }
         }
       } else {
-        const access_token = (options?.headers as any)?.Authorization.split(
+        const access_token = (options?.headers as any)?.Authorization?.split(
           "Bearer "
         )[1];
-        redirect(`/logout?access_token=${access_token}`);
+        redirect(`/logout?access_token=${access_token ?? ""}`);
       }
+    } else {
+      throw new HttpError({ status: res.status, payload });
     }
-    //  else {
-    //   throw new HttpError(payload);
-    // }
   }
   // Đảm bảo logic dưới đây chỉ chạy ở phía client (browser)
   if (isClient()) {

@@ -10,9 +10,13 @@ import CountUpTotalJobs from "./CountUpTotalJobs";
 
 export default async function ContentRight() {
   try {
-    const { data: totalJobs } = await jobApiRequest.callFetchTotalJobs();
+    const { data: totalJobs } = await jobApiRequest.callFetchTotalJobs({
+      cache: "no-store",
+    });
     const { data: occupationData } =
-      await jobApiRequest.callFetchParamsOccupation();
+      await jobApiRequest.callFetchParamsOccupation({
+        cache: "no-store",
+      });
 
     return (
       <div className="hidden lg:block bg-[#212f3f4d] rounded-xl px-6 py-4 w-[571px] transition-all duration-300 ease-in-out border border-solid border-transparent hover:shadow-contentRight hover:border-[#11d769]">
