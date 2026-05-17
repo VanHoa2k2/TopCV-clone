@@ -23,7 +23,7 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
         className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square ${
           currentPage === 1
             ? "border-[#dee0e2] text-[#dee0e2] cursor-not-allowed pointer-events-none"
-            : "border-[#00b14f] text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white"
+            : "border-[#7c3aed] text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white"
         }`}
       >
         <IoIosArrowBack />
@@ -38,7 +38,7 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
         className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square ${
           currentPage === totalPages
             ? "border-[#dee0e2] text-[#dee0e2] cursor-not-allowed pointer-events-none"
-            : "border-[#00b14f] text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white"
+            : "border-[#7c3aed] text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white"
         }`}
       >
         <IoIosArrowForward />

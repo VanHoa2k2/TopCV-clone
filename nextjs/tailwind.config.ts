@@ -24,8 +24,8 @@ const config = {
       },
       boxShadow: {
         custom: "0 8px 16px 0 rgba(1, 18, 34, 0.04)",
-        contentRight: "0 0 14px rgba(1, 226, 99, .2)",
-        hoverCardCompany: "0 10px 30px rgba(14, 166, 59, .2)",
+        contentRight: "0 0 14px rgba(167, 139, 250, .2)",
+        hoverCardCompany: "0 10px 30px rgba(124, 58, 237, .2)",
       },
       transitionProperty: {
         transform: "transform",
@@ -35,7 +35,7 @@ const config = {
       },
       colors: {
         dark: "#212f3f",
-        primary: "#00b14f",
+        primary: "#7c3aed",
 
         white: "#fff",
 
@@ -97,7 +97,7 @@ const config = {
     },
 
     background: {
-      sectionCompanyHeader: `transparent linear-gradient(6deg, #fff, #c4ffdd 100%, rgba(195, 255, 221, .702) 0) 0 0 no-repeat padding-box`,
+      sectionCompanyHeader: `transparent linear-gradient(6deg, #fff, #ede9fe 100%, rgba(237, 233, 254, .702) 0) 0 0 no-repeat padding-box`,
     },
 
     backgroundImage: {
@@ -105,12 +105,12 @@ const config = {
       auth02: `url('/assets/images/banner-02.webp')`,
       "auth-arrow": `url('/assets/images/auth_arrow.webp')`,
       "section-header": `url('/assets/images/bg_header.webp')`,
-      line: `linear-gradient(90deg, rgba(17, 215, 105, 0), #11d769 50%, rgba(17, 215, 105, 0))`,
-      sectionJobHeader: `linear-gradient(0deg, #fff, #e4fff0)`,
+      line: `linear-gradient(90deg, rgba(167, 139, 250, 0), #a78bfa 50%, rgba(167, 139, 250, 0))`,
+      sectionJobHeader: `linear-gradient(0deg, #fff, #f5f3ff)`,
       lineJobHeader: `linear-gradient(0deg, #fff, #dadada 50.45%, #fff);`,
-      bgHeaderUploadCV: "linear-gradient(86deg, #107047 7.25%, #09783b 94.78%)",
-      bgJobDetailIcon: "linear-gradient(11deg, #00bf5d, #00907c)",
-      bgCompanyDetail: "linear-gradient(90deg, #212f3f, #00b14f)",
+      bgHeaderUploadCV: "linear-gradient(86deg, #6d28d9 7.25%, #5b21b6 94.78%)",
+      bgJobDetailIcon: "linear-gradient(11deg, #8b5cf6, #7c3aed)",
+      bgCompanyDetail: "linear-gradient(90deg, #212f3f, #7c3aed)",
     },
     backgroundSize: {
       full: "100% 100%",

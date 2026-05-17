@@ -34,7 +34,7 @@ const JobResumeHistory: React.FC<JobResumeHistoryProps> = ({ resume }) => {
   return (
     <div
       key={resume.id}
-      className="rounded-lg flex gap-5 p-3 border border-[#acf2cb]"
+      className="rounded-lg flex gap-5 p-3 border border-[#ddd6fe]"
     >
       <div className="flex items-center rounded-lg h-[120px] p-[2px] w-[120px] bg-white border border-[#e9eaec] ">
         <Link href={`/job/${resume.id}`} className="flex overflow-hidden p-1.5">
@@ -55,7 +55,7 @@ const JobResumeHistory: React.FC<JobResumeHistoryProps> = ({ resume }) => {
             </h3>
           </Tooltip>
           <div className="h-7 min-w-[80px] text-right">
-            <label className="text-[#00b14f] text-sm font-semibold leading-[22px] whitespace-nowrap">
+            <label className="text-[#7c3aed] text-sm font-semibold leading-[22px] whitespace-nowrap">
               {job?.salary}
             </label>
           </div>
@@ -79,7 +79,7 @@ const JobResumeHistory: React.FC<JobResumeHistoryProps> = ({ resume }) => {
           <Link
             href={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/resume/${resume?.url}`}
             target="_blank"
-            className="text-[#00b14f] underline ml-1"
+            className="text-[#7c3aed] underline ml-1"
           >
             CV tải lên
           </Link>

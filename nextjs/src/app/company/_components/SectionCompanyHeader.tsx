@@ -5,14 +5,14 @@ import companyBillBoard from "@/assets/images/company-billBoard.webp";
 
 const SectionCompanyHeader = () => {
   return (
-    <div className="pt-6 min-h-[273px] bg-[linear-gradient(6deg,#fff,#c4ffdd_100%,rgba(195,255,221,0.702)_0%)] bg-no-repeat">
+    <div className="pt-6 min-h-[273px] bg-[linear-gradient(6deg,#fff,#ede9fe_100%,rgba(195,255,221,0.702)_0%)] bg-no-repeat">
       <div className="container flex max-w-[1320px] px-[7.5px]">
         <div>
           <p className="pb-[33px] text-[14px] leading-[28px] text-[#333] font-semibold py-[5px] mb-1">
             Danh sách công ty
           </p>
           <div className="mb-[37px]">
-            <h1 className="text-[#00b14f] text-2xl tracking-normal font-medium pb-3 mb-[5px] text-left">
+            <h1 className="text-[#7c3aed] text-2xl tracking-normal font-medium pb-3 mb-[5px] text-left">
               Khám phá 100.000+ công ty nổi bật
             </h1>
             <p className="text-[16px] text-[#333]">
@@ -34,7 +34,7 @@ const SectionCompanyHeader = () => {
             />
             <button
               type="submit"
-              className="bg-[#00b14f] rounded-[100px] text-white text-base absolute right-[7px] top-1/2 -translate-y-1/2 font-normal leading-[1.5] py-[0.375rem] px-[0.75rem] text-center"
+              className="bg-[#7c3aed] rounded-[100px] text-white text-base absolute right-[7px] top-1/2 -translate-y-1/2 font-normal leading-[1.5] py-[0.375rem] px-[0.75rem] text-center"
             >
               Tìm kiếm
             </button>

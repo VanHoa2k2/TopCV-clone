@@ -12,7 +12,7 @@ const CountUpTotalJobs = ({ totalJobs }: { totalJobs: number | undefined }) => {
       value={totalJobs}
       formatter={formatter}
       valueStyle={{
-        color: "#11d769",
+        color: "#a78bfa",
         fontSize: "14px",
         fontWeight: "600",
         lineHeight: "22px",

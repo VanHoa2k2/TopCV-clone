@@ -48,13 +48,13 @@ const JobBannerCarousel: React.FC = () => {
       </Carousel>
       <button
         onClick={() => api?.scrollPrev()}
-        className="absolute top-1/2 -translate-y-1/2 bg-white left-[-20px] text-[18px] w-10 h-10 flex items-center justify-center rounded-full text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white z-10 shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all duration-300"
+        className="absolute top-1/2 -translate-y-1/2 bg-white left-[-20px] text-[18px] w-10 h-10 flex items-center justify-center rounded-full text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white z-10 shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all duration-300"
       >
         <IoIosArrowBack />
       </button>
       <button
         onClick={() => api?.scrollNext()}
-        className="absolute top-1/2 -translate-y-1/2 bg-white right-[-20px] text-[18px] w-10 h-10 flex items-center justify-center rounded-full text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white z-10 shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all duration-300"
+        className="absolute top-1/2 -translate-y-1/2 bg-white right-[-20px] text-[18px] w-10 h-10 flex items-center justify-center rounded-full text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white z-10 shadow-[0_6px_16px_rgba(0,0,0,0.08)] transition-all duration-300"
       >
         <IoIosArrowForward />
       </button>

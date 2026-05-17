@@ -14,7 +14,7 @@ const JobCardSuggest: React.FC<JobCardSuggestProps> = ({ job }) => {
   return (
     <div
       key={job.id}
-      className="rounded-lg flex gap-5 p-3 bg-[#f2fbf6] border border-[#acf2cb] hover:bg-[#f2fbf6] hover:border hover:border-[#00b14f]"
+      className="rounded-lg flex gap-5 p-3 bg-[#faf5ff] border border-[#ddd6fe] hover:bg-[#faf5ff] hover:border hover:border-[#7c3aed]"
     >
       <div className="flex items-center rounded-lg h-[120px] p-[2px] w-[120px] bg-white border border-[#e9eaec] ">
         <Link href={`/job/${job.id}`} className="flex overflow-hidden p-1.5">
@@ -35,7 +35,7 @@ const JobCardSuggest: React.FC<JobCardSuggestProps> = ({ job }) => {
             </h3>
           </Tooltip>
           <div className="h-7 min-w-[80px] text-right">
-            <label className="text-[#00b14f] text-sm font-semibold leading-[22px] whitespace-nowrap">
+            <label className="text-[#7c3aed] text-sm font-semibold leading-[22px] whitespace-nowrap">
               {job.salary}
             </label>
           </div>

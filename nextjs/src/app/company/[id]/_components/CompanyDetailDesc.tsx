@@ -37,7 +37,7 @@ const CompanyDescription: React.FC<CompanyDescriptionProps> = ({
       {/* Toggle Button */}
       <div
         onClick={toggleDescription}
-        className="text-[#00b14f] text-sm font-medium mt-[15px] flex items-center gap-1.5 w-full cursor-pointer"
+        className="text-[#7c3aed] text-sm font-medium mt-[15px] flex items-center gap-1.5 w-full cursor-pointer"
       >
         {isExpanded ? "Thu gọn" : "Xem thêm"}
         <span

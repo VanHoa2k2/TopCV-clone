@@ -151,7 +151,7 @@ const ContentRight = () => {
             <span className="text-white top-0 right-0 text-[9px] leading-[12px] py-[1px] px-[4px] absolute bg-gray-500">
               VERIFIED
             </span>
-            <div className="absolute bottom-0 right-0 flex items-center justify-center w-5 h-5 text-xs text-white bg-[#00b14f] rounded-full p-0.5 cursor-pointer">
+            <div className="absolute bottom-0 right-0 flex items-center justify-center w-5 h-5 text-xs text-white bg-[#7c3aed] rounded-full p-0.5 cursor-pointer">
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                   <FaCamera onClick={() => setIsDialogOpen(true)} />
@@ -290,13 +290,13 @@ const ContentRight = () => {
           </p>
           <ul className="text-[#212f3f] text-[14px] font-normal tracking-[0.14px] leading-[22px] mt-4 list-none mb-[10px]">
             <li className="mb-2 flex items-center">
-              <span className="inline-flex items-center justify-center w-5 h-5 mr-2 text-[12px] font-normal text-[#00b14f] bg-[#e3faed] rounded-[20px]">
+              <span className="inline-flex items-center justify-center w-5 h-5 mr-2 text-[12px] font-normal text-[#7c3aed] bg-[#ede9fe] rounded-[20px]">
                 <FaCheck />
               </span>
               Nhắn tin qua Top Connect trên TopCV
             </li>
             <li className="mb-2 flex items-center">
-              <span className="inline-flex items-center justify-center w-5 h-5 mr-2 text-[12px] font-normal text-[#00b14f] bg-[#e3faed] rounded-[20px]">
+              <span className="inline-flex items-center justify-center w-5 h-5 mr-2 text-[12px] font-normal text-[#7c3aed] bg-[#ede9fe] rounded-[20px]">
                 <FaCheck />
               </span>
               Email và Số điện thoại của bạn

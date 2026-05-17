@@ -132,7 +132,7 @@ const HeaderContent = () => {
               return (
                 <li
                   key={item.id}
-                  className="border-b border-[#f4f5f5] p-[10px] text-[14px] text-[#212f3f] hover:text-[#00b14f] cursor-pointer"
+                  className="border-b border-[#f4f5f5] p-[10px] text-[14px] text-[#212f3f] hover:text-[#7c3aed] cursor-pointer"
                   // onClick={() => handleViewDetailJob(item)}
                 >
                   <div className="font-semibold">{item.title}</div>
@@ -193,7 +193,7 @@ const HeaderContent = () => {
           href="/personal-info"
           className="flex items-center text-[#212f3f] text-sm font-medium px-[10px] py-[14px] hover:text-primary"
         >
-          <span className="text-[#00b14f] pr-4 w-[30px] text-[15px]">
+          <span className="text-[#7c3aed] pr-4 w-[30px] text-[15px]">
             <FormOutlined />
           </span>
           Cài đặt thông tin cá nhân
@@ -204,7 +204,7 @@ const HeaderContent = () => {
           href="/apply-history"
           className="flex items-center text-[#212f3f] text-sm font-medium px-[10px] py-[14px] hover:text-primary"
         >
-          <span className="text-[#00b14f] pr-4 w-[30px] text-[15px]">
+          <span className="text-[#7c3aed] pr-4 w-[30px] text-[15px]">
             <HistoryOutlined />
           </span>
           Việc làm đã ứng tuyển
@@ -215,7 +215,7 @@ const HeaderContent = () => {
           onClick={() => handleLogout()}
           className="flex items-center text-[#e74c3c] text-sm font-medium px-[10px] py-[14px] hover:text-primary cursor-pointer"
         >
-          <span className="text-[#00b14f] pr-4 w-[30px] text-[15px]">
+          <span className="text-[#7c3aed] pr-4 w-[30px] text-[15px]">
             <FiLogOut />
           </span>
           Đăng xuất
@@ -295,7 +295,7 @@ const HeaderContent = () => {
                   onOpenChange={() => setIsOpenNotifyTooltip(false)}
                 >
                   <div
-                    className="bg-[#00b14f1a] rounded-full cursor-pointer relative"
+                    className="bg-[#7c3aed1a] rounded-full cursor-pointer relative"
                     onClick={() => setIsOpenNotifyTooltip(!isOpenNotifyTooltip)}
                   >
                     <FaBell
@@ -320,7 +320,7 @@ const HeaderContent = () => {
                   onOpenChange={() => setIsOpenChatTooltip(false)}
                 >
                   <div
-                    className="bg-[#00b14f1a] rounded-full cursor-pointer"
+                    className="bg-[#7c3aed1a] rounded-full cursor-pointer"
                     onClick={() => setIsOpenChatTooltip(!isOpenChatTooltip)}
                   >
                     <IoIosChatbubbles
@@ -381,7 +381,7 @@ const HeaderContent = () => {
                   onOpenChange={() => setIsOpenNotifyTooltip(false)}
                 >
                   <div
-                    className="bg-[#00b14f1a] rounded-full cursor-pointer relative"
+                    className="bg-[#7c3aed1a] rounded-full cursor-pointer relative"
                     onClick={() => setIsOpenNotifyTooltip(!isOpenNotifyTooltip)}
                   >
                     <FaBell
@@ -406,7 +406,7 @@ const HeaderContent = () => {
                   onOpenChange={() => setIsOpenChatTooltip(false)}
                 >
                   <div
-                    className="bg-[#00b14f1a] rounded-full cursor-pointer"
+                    className="bg-[#7c3aed1a] rounded-full cursor-pointer"
                     onClick={() => setIsOpenChatTooltip(!isOpenChatTooltip)}
                   >
                     <IoIosChatbubbles
@@ -420,10 +420,10 @@ const HeaderContent = () => {
               </>
             )}
             <div
-              className="flex items-center justify-center rounded-full w-10 h-10 bg-[#00b14f1a] cursor-pointer"
+              className="flex items-center justify-center rounded-full w-10 h-10 bg-[#7c3aed1a] cursor-pointer"
               onClick={() => setBoxMenu(!boxMenu)}
             >
-              <span className="text-[22px] text-[#00b14f]">
+              <span className="text-[22px] text-[#7c3aed]">
                 {boxMenu ? <FaXmark /> : <FaBars />}
               </span>
             </div>

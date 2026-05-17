@@ -65,7 +65,7 @@ const BtnApplyJob = (props: IProps) => {
               </div>
               <h4 className="text-[#263a4d] text-lg font-bold tracking-[-.2px]">
                 Ứng tuyển{" "}
-                <span className="text-[#00b14f]">{jobDetail?.name}</span>
+                <span className="text-[#7c3aed]">{jobDetail?.name}</span>
               </h4>
             </DialogTitle>
             <ModalApplyJob

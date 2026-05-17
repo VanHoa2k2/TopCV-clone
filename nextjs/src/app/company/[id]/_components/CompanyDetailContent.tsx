@@ -28,7 +28,7 @@ const CompanyDetailContent = async ({ id }: IProps) => {
           <div className="flex flex-wrap items-center py-5">
             <Link
               href={`/company`}
-              className="text-[#00b14f] text-sm font-semibold leading-[22px] tracking-[0.175px]"
+              className="text-[#7c3aed] text-sm font-semibold leading-[22px] tracking-[0.175px]"
             >
               Danh sách công ty
             </Link>
@@ -112,7 +112,7 @@ const CompanyDetailContent = async ({ id }: IProps) => {
               </h2>
               <div className="pt-5 pb-7 px-5">
                 <div className="flex items-center mb-2">
-                  <span className="text-[#00b14f] text-[19.2px] font-black h-[25.6px] leading-[26px] mr-[7.2px] text-center w-[25.6px]">
+                  <span className="text-[#7c3aed] text-[19.2px] font-black h-[25.6px] leading-[26px] mr-[7.2px] text-center w-[25.6px]">
                     <FaLocationDot />
                   </span>
                   <span className="text-sm text-[#212f3f] font-medium">

@@ -111,7 +111,7 @@ const SearchJobResult = async ({ name, location }: IProps) => {
 };
 
 const JobCardSkeleton = () => (
-  <div className="rounded-lg flex gap-5 p-3 bg-[#f2fbf6] border border-[#acf2cb]">
+  <div className="rounded-lg flex gap-5 p-3 bg-[#faf5ff] border border-[#ddd6fe]">
     <Skeleton className="h-[120px] w-[120px] rounded-lg" />
     <div className="flex-1">
       <div className="flex justify-between items-start">

@@ -20,7 +20,7 @@ const SectionJobHeader = async () => {
     <div className="pb-6 pt-8 bg-sectionJobHeader relative">
       <div className="container">
         <div className="text-center mb-4">
-          <h1 className="text-[20px] leading-[28px] lg:text-[30px] lg:leading-[32px] text-[#009643] font-bold mb-[6px]">
+          <h1 className="text-[20px] leading-[28px] lg:text-[30px] lg:leading-[32px] text-[#7c3aed] font-bold mb-[6px]">
             Tìm việc làm nhanh 24h, việc làm mới nhất trên toàn quốc.
           </h1>
           <p className="text-[#263a4d] text-xs font-normal tracking-[0.12px] leading-4 text-center mb-[10px]">
@@ -81,7 +81,7 @@ const SectionJobHeader = async () => {
               <span className="bg-lineJobHeader h-full absolute right-[-8px] w-[1px]"></span>
             </div>
             <div className="pr-[2px] pl-2.5">
-              <Button className="w-full flex items-center justify-center gap-2 h-11 px-5 bg-[#00b14f] text-white text-sm font-semibold leading-6 rounded-full transition duration-300">
+              <Button className="w-full flex items-center justify-center gap-2 h-11 px-5 bg-[#7c3aed] text-white text-sm font-semibold leading-6 rounded-full transition duration-300">
                 <span className="hidden lg:block text-lg">
                   <HiMiniMagnifyingGlass />
                 </span>{" "}

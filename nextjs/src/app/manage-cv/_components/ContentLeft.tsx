@@ -105,10 +105,10 @@ const ContentLeft = () => {
           {user?.urlCV ? (
             <div className="pt-4 pb-6 px-0 lg:px-8 w-full">
               <h3 className="text-lg font-semibold mb-3 flex items-center">
-                <FaFile className="mr-2 text-[#00b14f] flex items-center" />
+                <FaFile className="mr-2 text-[#7c3aed] flex items-center" />
                 CV đã tải lên:
                 <a
-                  className="text-[#00b14f] hover:text-[#008f3f] ml-1 text-sm transition-colors duration-200 underline flex items-center"
+                  className="text-[#7c3aed] hover:text-[#6d28d9] ml-1 text-sm transition-colors duration-200 underline flex items-center"
                   href={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/resume/${user?.urlCV}`}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -19,7 +19,7 @@ const SearchJobResultSkeleton = () => {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="rounded-lg flex gap-5 p-3 bg-[#f2fbf6] border border-[#acf2cb]"
+              className="rounded-lg flex gap-5 p-3 bg-[#faf5ff] border border-[#ddd6fe]"
             >
               <Skeleton className="h-[120px] w-[120px] rounded-lg" />
               <div className="flex-1">

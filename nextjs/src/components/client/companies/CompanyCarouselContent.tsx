@@ -62,13 +62,13 @@ const CompanyCarouselContent: React.FC<CompanyCarouselContentProps> = ({
           <div className="flex items-center justify-center gap-[11px]">
             <span
               onClick={() => api?.scrollPrev()}
-              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#00b14f] text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white`}
+              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#7c3aed] text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white`}
             >
               <IoIosArrowBack />
             </span>
             <span
               onClick={() => api?.scrollNext()}
-              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#00b14f] text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white`}
+              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#7c3aed] text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white`}
             >
               <IoIosArrowForward />
             </span>
@@ -81,7 +81,7 @@ const CompanyCarouselContent: React.FC<CompanyCarouselContentProps> = ({
                 key={index}
                 className="md:basis-1/2 lg:basis-1/4 pl-5"
               >
-                <Card className="border border-solid border-[#dee0e2] hover:border-[#33c172] transition-colors duration-200 hover:shadow-hoverCardCompany">
+                <Card className="border border-solid border-[#dee0e2] hover:border-[#a78bfa] transition-colors duration-200 hover:shadow-hoverCardCompany">
                   <CardContent className="flex flex-col items-center justify-center rounded-xl px-4 py-5 w-[270px] min-h-[184px]">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/company/${company?.logo}`}
@@ -128,13 +128,13 @@ const CompanyCarouselContent: React.FC<CompanyCarouselContentProps> = ({
           <div className="flex items-center justify-center gap-[11px]">
             <span
               onClick={() => api?.scrollPrev()}
-              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#00b14f] text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white`}
+              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#7c3aed] text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white`}
             >
               <IoIosArrowBack />
             </span>
             <span
               onClick={() => api?.scrollNext()}
-              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#00b14f] text-[#00b14f] cursor-pointer hover:bg-[#00b14f] hover:text-white`}
+              className={`text-[16px] border border-solid w-8 flex items-center justify-center rounded-[50%] aspect-square border-[#7c3aed] text-[#7c3aed] cursor-pointer hover:bg-[#7c3aed] hover:text-white`}
             >
               <IoIosArrowForward />
             </span>
@@ -147,7 +147,7 @@ const CompanyCarouselContent: React.FC<CompanyCarouselContentProps> = ({
                 key={index}
                 className="md:basis-1/2 lg:basis-1/4 pl-5"
               >
-                <Card className="border border-solid border-[#dee0e2] hover:border-[#33c172] transition-colors duration-200 hover:shadow-hoverCardCompany">
+                <Card className="border border-solid border-[#dee0e2] hover:border-[#a78bfa] transition-colors duration-200 hover:shadow-hoverCardCompany">
                   <CardContent className="w-full lg:w-[270px] flex flex-col items-center justify-center rounded-xl px-4 py-5 min-h-[184px]">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/company/${company?.logo}`}

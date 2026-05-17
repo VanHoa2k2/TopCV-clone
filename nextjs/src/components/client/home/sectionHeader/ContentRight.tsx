@@ -19,14 +19,14 @@ export default async function ContentRight() {
       });
 
     return (
-      <div className="hidden lg:block bg-[#212f3f4d] rounded-xl px-6 py-4 w-[571px] transition-all duration-300 ease-in-out border border-solid border-transparent hover:shadow-contentRight hover:border-[#11d769]">
+      <div className="hidden lg:block bg-[#212f3f4d] rounded-xl px-6 py-4 w-[571px] transition-all duration-300 ease-in-out border border-solid border-transparent hover:shadow-contentRight hover:border-[#a78bfa]">
         <div className="mb-4">
           <div className="flex justify-between mb-[22px]">
             <span className="text-white flex text-[14px] leading-[22px] gap-2 tracking-[.175px] font-semibold">
               <Image src={IconSearch} alt="IconSearch" width={24} height={24} />
               Thị trường việc làm hôm nay:
             </span>
-            <span className="text-[#11d769] text-[14px] leading-[22px] tracking-[.175px] font-semibold">
+            <span className="text-[#a78bfa] text-[14px] leading-[22px] tracking-[.175px] font-semibold">
               {dayjs(new Date()).format("DD/MM/YYYY")}
             </span>
           </div>
@@ -35,7 +35,7 @@ export default async function ContentRight() {
               Việc làm đang tuyển
             </span>
             <CountUpTotalJobs totalJobs={totalJobs} />
-            <div className="text-[#11d769] h-6 w-6 flex items-center justify-center bg-[#11d7691a] rounded-[15px] p-[6px] text-[12px]">
+            <div className="text-[#a78bfa] h-6 w-6 flex items-center justify-center bg-[#a78bfa1a] rounded-[15px] p-[6px] text-[12px]">
               <FaArrowTrendUp />
             </div>
           </div>

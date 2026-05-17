@@ -95,7 +95,7 @@ const ContentLeft = () => {
           </div>
           <Button
             type="submit"
-            className="bg-[#00b14f] rounded-md text-white text-sm font-semibold h-10 leading-5 w-[100px] mt-6"
+            className="bg-[#7c3aed] rounded-md text-white text-sm font-semibold h-10 leading-5 w-[100px] mt-6"
           >
             Lưu
           </Button>

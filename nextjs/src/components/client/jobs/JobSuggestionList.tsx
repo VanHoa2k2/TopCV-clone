@@ -69,7 +69,7 @@ const JobSuggestionList = () => {
   return (
     <>
       <div className="flex justify-between pb-4">
-        <div className="text-[#00b14f] text-2xl font-semibold">
+        <div className="text-[#7c3aed] text-2xl font-semibold">
           <h2>
             {user.urlCV
               ? "Gợi ý việc làm phù hợp với CV của bạn"
@@ -171,7 +171,7 @@ const JobSuggestionList = () => {
 };
 
 const JobCardSkeleton = () => (
-  <div className="rounded-lg flex gap-5 p-3 bg-[#f2fbf6] border border-[#acf2cb]">
+  <div className="rounded-lg flex gap-5 p-3 bg-[#faf5ff] border border-[#ddd6fe]">
     <Skeleton className="h-[120px] w-[120px] rounded-lg" />
     <div className="flex-1">
       <div className="flex justify-between items-start">

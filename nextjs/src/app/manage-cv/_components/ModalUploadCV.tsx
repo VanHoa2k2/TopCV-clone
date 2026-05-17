@@ -130,10 +130,10 @@ const ModalUploadCV = (props: IProps) => {
           </div>
           {dataCV.length > 0 ? (
             <div>
-              <p className="text-[#00b14f] mb-[10px] text-center">
+              <p className="text-[#7c3aed] mb-[10px] text-center">
                 {dataCV[0].name}
               </p>
-              <p className="text-[#00b14f] mb-[10px] text-center">
+              <p className="text-[#7c3aed] mb-[10px] text-center">
                 Chọn tệp khác
               </p>
             </div>
@@ -158,7 +158,7 @@ const ModalUploadCV = (props: IProps) => {
         </div>
         <div className="border-b border-[#eee] pb-8 text-center">
           <button
-            className="bg-[#00b14f] text-white text-[14px] font-semibold h-[40px] tracking-[0.175px] leading-[22px] px-4 w-[125px]"
+            className="bg-[#7c3aed] text-white text-[14px] font-semibold h-[40px] tracking-[0.175px] leading-[22px] px-4 w-[125px]"
             onClick={() => fetchUpdateUserCV()}
             disabled={loadingUpload || loadingUpdate}
           >
@@ -178,7 +178,7 @@ const ModalUploadCV = (props: IProps) => {
 
         <div className="grid gap-5 grid-cols-2 my-6">
           <div className="flex flex-col items-center justify-center gap-2 border border-[#e6e7e8] rounded-[10px] py-5">
-            <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full mb-3 text-2xl bg-[#f2fbf6] text-[#00b14f]">
+            <div className="flex items-center justify-center w-[60px] h-[60px] rounded-full mb-3 text-2xl bg-[#faf5ff] text-[#7c3aed]">
               <LuFileHeart />
             </div>
             <h3 className="text-[#212f3f] text-[16px] font-semibold leading-[24px] tracking-[-0.16px] m-0 text-center">

@@ -61,7 +61,7 @@ const JobDetailContent = async ({ id }: IProps) => {
           <div className="flex flex-wrap items-center py-3">
             <Link
               href={`/`}
-              className="text-[#00b14f] text-sm font-semibold leading-[22px] tracking-[0.175px]"
+              className="text-[#7c3aed] text-sm font-semibold leading-[22px] tracking-[0.175px]"
             >
               Trang chủ
             </Link>
@@ -215,7 +215,7 @@ const JobDetailContent = async ({ id }: IProps) => {
 
                 <Link
                   href={`/company/${jobDetail?.company?.id}`}
-                  className="flex items-center gap-2.5 justify-center w-full text-[#00b14f] text-[14px] leading-[22px] font-semibold tracking-[.175] hover:underline"
+                  className="flex items-center gap-2.5 justify-center w-full text-[#7c3aed] text-[14px] leading-[22px] font-semibold tracking-[.175] hover:underline"
                 >
                   Xem trang công ty <BsBoxArrowUpRight />
                 </Link>
@@ -227,7 +227,7 @@ const JobDetailContent = async ({ id }: IProps) => {
                 </h2>
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-center justify-center bg-[#00b14f] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
+                    <div className="flex flex-col items-center justify-center bg-[#7c3aed] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
                       <span className="text-[16px] text-white">
                         <FaIdBadge />
                       </span>
@@ -243,7 +243,7 @@ const JobDetailContent = async ({ id }: IProps) => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-center justify-center bg-[#00b14f] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
+                    <div className="flex flex-col items-center justify-center bg-[#7c3aed] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
                       <span className="text-[16px] text-white">
                         <FaHourglassHalf />
                       </span>
@@ -259,7 +259,7 @@ const JobDetailContent = async ({ id }: IProps) => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-center justify-center bg-[#00b14f] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
+                    <div className="flex flex-col items-center justify-center bg-[#7c3aed] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
                       <span className="text-[16px] text-white">
                         <HiUsers />
                       </span>
@@ -275,7 +275,7 @@ const JobDetailContent = async ({ id }: IProps) => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-center justify-center bg-[#00b14f] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
+                    <div className="flex flex-col items-center justify-center bg-[#7c3aed] rounded-[30px] gap-[10px] h-[40px] w-[40px] p-[10px]">
                       <span className="text-[16px] text-white">
                         <BsFillBackpack4Fill />
                       </span>

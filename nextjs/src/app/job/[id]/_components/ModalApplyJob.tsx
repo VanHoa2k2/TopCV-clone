@@ -106,7 +106,7 @@ const ModalApplyJob = (props: IProps) => {
   return (
     <div className="max-h-[100vh] pr-7 pl-8">
       <div className="mt-4 flex gap-2">
-        <span className="text-[22px] text-[#15bf61]">
+        <span className="text-[22px] text-[#7c3aed]">
           <RiFolderUserFill />
         </span>{" "}
         <span className="text-[#263a4d] text-[16px] leading-6 font-semibold">
@@ -119,7 +119,7 @@ const ModalApplyJob = (props: IProps) => {
           <div
             className={`border ${
               valueCV === "current-cv"
-                ? "border-solid border-[#00b14f]"
+                ? "border-solid border-[#7c3aed]"
                 : "border-dashed border-[#b3b8bd]"
             } rounded-[6px] cursor-pointer px-2.5 py-[16px]`}
             onClick={() => setValueCV("current-cv")}
@@ -134,19 +134,19 @@ const ModalApplyJob = (props: IProps) => {
                   <span
                     className={`aspect-square border-[2px] border-solid ${
                       valueCV === "current-cv"
-                        ? "border-[#00b14f]"
+                        ? "border-[#7c3aed]"
                         : "border-[#b3b8bd]"
                     } rounded-full mr-2 relative w-5 flex items-center justify-center`}
                   >
                     {valueCV === "current-cv" ? (
-                      <span className="bg-[#00b14f] rounded-full block w-2.5 h-2.5"></span>
+                      <span className="bg-[#7c3aed] rounded-full block w-2.5 h-2.5"></span>
                     ) : (
                       ""
                     )}
                   </span>
                 </div>
                 <span
-                  className="text-[#00b14f] [display:-webkit-box] [-webkit-line-clamp:1] [-webkit-box-orient:vertical] text-[14px] leading-[22px]
+                  className="text-[#7c3aed] [display:-webkit-box] [-webkit-line-clamp:1] [-webkit-box-orient:vertical] text-[14px] leading-[22px]
               overflow-hidden text-ellipsis"
                 >
                   CV ứng tuyển: {user?.urlCV}
@@ -193,7 +193,7 @@ const ModalApplyJob = (props: IProps) => {
         <div
           className={`border ${
             valueCV === "new-cv"
-              ? "border-solid border-[#00b14f]"
+              ? "border-solid border-[#7c3aed]"
               : "border-dashed border-[#b3b8bd]"
           } rounded-[6px] cursor-pointer px-2.5 py-[16px] relative`}
           onClick={() => setValueCV("new-cv")}
@@ -202,11 +202,11 @@ const ModalApplyJob = (props: IProps) => {
             <div className="relative">
               <div
                 className={`absolute aspect-square border-[2px] border-solid ${
-                  valueCV === "new-cv" ? "border-[#00b14f]" : "border-[#b3b8bd]"
+                  valueCV === "new-cv" ? "border-[#7c3aed]" : "border-[#b3b8bd]"
                 }  rounded-full mr-2 w-5 flex items-center justify-center`}
               >
                 {valueCV === "new-cv" ? (
-                  <span className="bg-[#00b14f] rounded-full block w-2.5 h-2.5"></span>
+                  <span className="bg-[#7c3aed] rounded-full block w-2.5 h-2.5"></span>
                 ) : (
                   ""
                 )}
@@ -236,7 +236,7 @@ const ModalApplyJob = (props: IProps) => {
                     </div>
                     <div className="flex items-center gap-3">
                       <Link
-                        className="text-[#00b14f] [display:-webkit-box] [-webkit-line-clamp:1] [-webkit-box-orient:vertical] max-w-[174px] font-semibold overflow-hidden text-ellipsis"
+                        className="text-[#7c3aed] [display:-webkit-box] [-webkit-line-clamp:1] [-webkit-box-orient:vertical] max-w-[174px] font-semibold overflow-hidden text-ellipsis"
                         href={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/resume/${urlNewCV}`}
                         target="_blank"
                         rel="noopener noreferrer"

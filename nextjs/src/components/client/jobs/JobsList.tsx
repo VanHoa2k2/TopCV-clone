@@ -117,8 +117,8 @@ const JobsList = () => {
         onClick={() => setActiveFilter(item.value)}
         className={`h-10 border rounded-full !px-3 !py-[9px] text-sm shadow-none font-medium transition-colors duration-200 ${
           activeFilter === item.value
-            ? "bg-[#00b14f] text-white"
-            : "bg-white text-[#212f3f] border-[#e5e7eb] hover:bg-white hover:border-[#009a45]"
+            ? "bg-[#7c3aed] text-white"
+            : "bg-white text-[#212f3f] border-[#e5e7eb] hover:bg-white hover:border-[#6d28d9]"
         }`}
       >
         {item.label}
@@ -129,7 +129,7 @@ const JobsList = () => {
   return (
     <>
       <div className="flex items-center justify-between text-[#212f3f] text-[16px] pb-4">
-        <div className="w-full lg:w-auto text-[#00b14f] flex items-center justify-between lg:justify-start text-2xl font-semibold gap-4">
+        <div className="w-full lg:w-auto text-[#7c3aed] flex items-center justify-between lg:justify-start text-2xl font-semibold gap-4">
           <h2>Việc làm tốt nhất</h2>
           <div className="lg:border-l lg:border-solid lg:border-[#bcc1c5] pl-4">
             <Image src={ToppyAl} alt="ToppyAl" width={110} height={26} />

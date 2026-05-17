@@ -56,7 +56,7 @@ const FilterAndScrollableButtons: React.FC<FilterAndScrollableButtonsProps> = ({
       </div>
       <div className="flex items-center gap-[15px] overflow-hidden">
         <span
-          className="text-[16px] border border-solid border-[#00b14f] text-[#00b14f] cursor-pointer w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-[50%] hover:bg-[#00b14f] hover:text-white"
+          className="text-[16px] border border-solid border-[#7c3aed] text-[#7c3aed] cursor-pointer w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-[50%] hover:bg-[#7c3aed] hover:text-white"
           onClick={() => {
             document.getElementById("scrollable-container")?.scrollBy({
               left: -200,
@@ -79,7 +79,7 @@ const FilterAndScrollableButtons: React.FC<FilterAndScrollableButtonsProps> = ({
           </div>
         </div>
         <span
-          className="text-[16px] border border-solid border-[#00b14f] text-[#00b14f] cursor-pointer w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-[50%] hover:bg-[#00b14f] hover:text-white"
+          className="text-[16px] border border-solid border-[#7c3aed] text-[#7c3aed] cursor-pointer w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-[50%] hover:bg-[#7c3aed] hover:text-white"
           onClick={() => {
             document.getElementById("scrollable-container")?.scrollBy({
               left: 200,
