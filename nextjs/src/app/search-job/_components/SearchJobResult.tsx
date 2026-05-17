@@ -4,6 +4,8 @@ import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 import dayjs from "dayjs";
 import Image from "next/image";
+import Banner from "@/assets/images/Banner-job-search.webp";
+import Report from "@/assets/images/recruiment_report_2023_2024.webp";
 import NoneResult from "@/assets/images/none-result.webp";
 import JobCardSuggest from "@/components/client/jobs/JobCardSuggest";
 import { Skeleton } from "@/components/ui/skeleton";
