@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import TopCVLogo from "@/assets/images/topcv-logo-6.webp";
+import Logo from "@/assets/images/logo_website.png";
 import Image from "next/image";
 import { Button } from "../../ui/button";
 import { useRouter } from "next/navigation";
@@ -35,7 +35,7 @@ const HeaderContent = () => {
   const route = useRouter();
   const userAccount = useAppSelector((state) => state?.account?.user);
   const isAuthenticated = useAppSelector(
-    (state) => state?.account?.isAuthenticated
+    (state) => state?.account?.isAuthenticated,
   );
   const [user, setUser] = useState<IUser | undefined>(undefined);
   const [boxMenu, setBoxMenu] = useState<boolean>(false);
@@ -44,7 +44,7 @@ const HeaderContent = () => {
       const fetchUser = async () => {
         try {
           const res = await userApiRequest.callFetchUserById(
-            userAccount?.id as number
+            userAccount?.id as number,
           );
           setUser(res?.data);
         } catch (error) {
@@ -228,7 +228,7 @@ const HeaderContent = () => {
       <div className="flex items-center justify-between px-6">
         <div className="flex">
           <Link href="/" className="pr-5">
-            <Image src={TopCVLogo} alt="TopCV" width={176} height={72} />
+            <Image src={Logo} alt="TopCV" width={72} height={72} />
           </Link>
 
           <div className="hidden lg:flex">

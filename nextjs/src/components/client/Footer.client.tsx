@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import TopCVLogo from "@/assets/images/topcv-logo-6.webp";
+import Logo from "@/assets/images/logo_website.png";
 import googleStartup from "@/assets/images/google_for_startup.webp";
 import DMCA from "@/assets/images/DMCA_badge_grn_60w.png";
 import blt from "@/assets/images/bct.webp";
@@ -29,8 +29,8 @@ const Footer = () => {
           <div>
             <Link href="/">
               <Image
-                src={TopCVLogo}
-                alt="TopCVLogo"
+                src={Logo}
+                alt="Logo"
                 width={327}
                 height={128}
                 className="object-contain mb-4"
