@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       }
     );
   }
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const access_token = cookieStore.get("access_token");
   if (!access_token) {
     return Response.json(

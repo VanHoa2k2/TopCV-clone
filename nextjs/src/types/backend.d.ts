@@ -84,7 +84,6 @@ export interface IAllUser {
   createdAt?: string;
   updatedAt?: string;
 }
-[];
 
 export interface IAccount {
   access_token: string;
@@ -135,7 +134,7 @@ export interface IRegisterForHR {
   };
 }
 
-export interface IGetAccount extends Omit<IAccount, "access_token"> {}
+export type IGetAccount = Omit<IAccount, "access_token">
 
 export interface IModelPaginate<T> {
   meta: {
@@ -166,7 +165,6 @@ export interface IAllCompany {
   createdAt?: string;
   updatedAt?: string;
 }
-[];
 
 export interface ICompany {
   id?: number;
@@ -261,7 +259,6 @@ export interface IAllJob {
   createdAt?: string;
   updatedAt?: string;
 }
-[];
 
 export interface IParamsOccupation {
   name: string;

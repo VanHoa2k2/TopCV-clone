@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import { useState, useEffect } from "react";
 import { IResume, IUser } from "@/types/backend";
 import styles from "@/styles/admin.module.scss";
+import TiptapEditor from "@/components/share/TiptapEditor";
 import userApiRequest from "@/apiRequests/user";
 import mailApiRequest from "@/apiRequests/mail";
 
@@ -19,12 +20,6 @@ const ModalSendMail = (props: IProps) => {
   const [form] = Form.useForm();
   const [userResume, setUserResume] = useState<IUser>();
   const [contentMail, setContentMail] = useState<string>("");
-
-  const [canUseDOM, setCanUseDOM] = useState(false);
-
-  useEffect(() => {
-    setCanUseDOM(typeof document !== "undefined");
-  }, []);
 
   useEffect(() => {
     const getUserById = async () => {
@@ -45,11 +40,6 @@ const ModalSendMail = (props: IProps) => {
     setOpenModal(false);
   };
 
-  let ReactQuill;
-  if (canUseDOM) {
-    ReactQuill = require("react-quill");
-    require("react-quill/dist/quill.snow.css");
-  }
   console.log(dataInit);
   const submitSendMail = async (valuesForm: any) => {
     const { name, email, title } = valuesForm;
@@ -117,23 +107,20 @@ const ModalSendMail = (props: IProps) => {
             />
           </Col>
           <Col span={24}>
-            {canUseDOM && ReactQuill && (
-              <ProForm.Item
-                name="contentMail"
-                label="Nội dung email"
-                rules={[
-                  { required: true, message: "Vui lòng nhập miêu tả mail!" },
-                ]}
-                className={styles["set-height-proFormItem"]}
-              >
-                <ReactQuill
-                  className={styles["set-height-quill"]}
-                  theme="snow"
-                  value={contentMail}
-                  onChange={setContentMail}
-                />
-              </ProForm.Item>
-            )}
+            <ProForm.Item
+              name="contentMail"
+              label="Nội dung email"
+              rules={[
+                { required: true, message: "Vui lòng nhập miêu tả mail!" },
+              ]}
+              className={styles["set-height-proFormItem"]}
+            >
+              <TiptapEditor
+                className={styles["set-height-quill"]}
+                value={contentMail}
+                onChange={setContentMail}
+              />
+            </ProForm.Item>
           </Col>
         </Row>
       </ModalForm>

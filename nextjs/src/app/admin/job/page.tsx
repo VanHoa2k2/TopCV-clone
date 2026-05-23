@@ -33,7 +33,7 @@ const JobPage = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [dataInit, setDataInit] = useState<IJob | null>(null);
   const user = useAppSelector((state) => state?.account?.user);
-  const tableRef = useRef<ActionType>();
+  const tableRef = useRef<ActionType | undefined>(undefined);
 
   const isFetching = useAppSelector((state) => state.job.isFetching);
   const meta = useAppSelector((state) => state.job.meta);

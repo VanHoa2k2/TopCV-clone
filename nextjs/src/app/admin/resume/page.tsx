@@ -28,7 +28,7 @@ import Access from "@/components/share/access";
 import resumeApiRequest from "@/apiRequests/resume";
 
 const ResumePage = () => {
-  const tableRef = useRef<ActionType>();
+  const tableRef = useRef<ActionType | undefined>(undefined);
 
   const isFetching = useAppSelector((state) => state.resume.isFetching);
   const meta = useAppSelector((state) => state.resume.meta);

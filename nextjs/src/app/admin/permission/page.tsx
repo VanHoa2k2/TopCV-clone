@@ -22,7 +22,7 @@ const PermissionPage = () => {
   const [dataInit, setDataInit] = useState<IPermission | null>(null);
   const [openViewDetail, setOpenViewDetail] = useState<boolean>(false);
 
-  const tableRef = useRef<ActionType>();
+  const tableRef = useRef<ActionType | undefined>(undefined);
 
   const isFetching = useAppSelector((state) => state.permission.isFetching);
   const meta = useAppSelector((state) => state.permission.meta);

@@ -3,7 +3,7 @@ import { HttpError } from "@/lib/http";
 import { cookies } from "next/headers";
 
 export async function POST(request: Request) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const refresh_token = cookieStore.get("refresh_token");
   if (!refresh_token) {
     return Response.json(

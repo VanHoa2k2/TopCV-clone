@@ -1,9 +1,10 @@
 import { ModalForm, ProForm, ProFormText } from "@ant-design/pro-components";
 import { Col, Form, message, notification, Row } from "antd";
 import { isMobile } from "react-device-detect";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IResume } from "@/types/backend";
 import styles from "@/styles/admin.module.scss";
+import TiptapEditor from "@/components/share/TiptapEditor";
 import mailApiRequest from "@/apiRequests/mail";
 
 interface IProps {
@@ -19,22 +20,10 @@ const ModalSendManyMail = (props: IProps) => {
   const [form] = Form.useForm();
   const [contentMail, setContentMail] = useState<string>("");
 
-  const [canUseDOM, setCanUseDOM] = useState(false);
-
-  useEffect(() => {
-    setCanUseDOM(typeof document !== "undefined");
-  }, []);
-
   const handleReset = async () => {
     form.resetFields();
     setOpenModal(false);
   };
-
-  let ReactQuill;
-  if (canUseDOM) {
-    ReactQuill = require("react-quill");
-    require("react-quill/dist/quill.snow.css");
-  }
 
   const submitSendMail = async (valuesForm: any) => {
     const { title } = valuesForm;
@@ -106,23 +95,20 @@ const ModalSendManyMail = (props: IProps) => {
           />
         </Col>
         <Col span={24}>
-          {canUseDOM && ReactQuill && (
-            <ProForm.Item
-              name="contentMail"
-              label="Nội dung email"
-              rules={[
-                { required: true, message: "Vui lòng nhập miêu tả mail!" },
-              ]}
-              className={styles["set-height-proFormItem"]}
-            >
-              <ReactQuill
-                className={styles["set-height-quill"]}
-                theme="snow"
-                value={contentMail}
-                onChange={setContentMail}
-              />
-            </ProForm.Item>
-          )}
+          <ProForm.Item
+            name="contentMail"
+            label="Nội dung email"
+            rules={[
+              { required: true, message: "Vui lòng nhập miêu tả mail!" },
+            ]}
+            className={styles["set-height-proFormItem"]}
+          >
+            <TiptapEditor
+              className={styles["set-height-quill"]}
+              value={contentMail}
+              onChange={setContentMail}
+            />
+          </ProForm.Item>
         </Col>
       </Row>
     </ModalForm>

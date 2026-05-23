@@ -3,13 +3,12 @@ import React from "react";
 import { FaCircleCheck } from "react-icons/fa6";
 
 interface IProps {
-  searchParams: { token: string; nameJob: string };
+  searchParams: Promise<{ token: string; nameJob: string }>;
 }
 
 // Nhận searchParams từ context của Server Component
 const verifyInterview = async ({ searchParams }: IProps) => {
-  const token = searchParams.token;
-  const nameJob = searchParams.nameJob;
+  const { token, nameJob } = await searchParams;
 
   const res = await resumeApiRequest.callConfirmInterview(token, {
     cache: "no-store",

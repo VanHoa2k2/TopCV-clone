@@ -46,11 +46,11 @@ const Admin = () => {
         jobs = await jobApiRequest.callFetchAllJobForHR(
           user?.company?.id as number
         );
-        let resumes = await resumeApiRequest.callFetchAllResumeForHR(
+        const resumes = await resumeApiRequest.callFetchAllResumeForHR(
           user?.company?.id as number
         );
         setResumeTotal(resumes?.data?.length);
-        let jobExpired: any = [];
+        const jobExpired: any = [];
         jobs?.data?.map((job: IJob) => {
           if (dayjs().isAfter(dayjs(job?.endDate))) {
             jobExpired.push(job);

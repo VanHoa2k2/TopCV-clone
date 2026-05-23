@@ -9,8 +9,8 @@ interface AccessTokenResponse {
   refresh_token: string;
 }
 
-let isRefreshing = false; // Cờ để theo dõi trạng thái làm mới token
-let refreshTokenPromise: Promise<AccessTokenResponse | null> | null = null; // Biến lưu trữ promise của lần gọi
+const isRefreshing = false; // Cờ để theo dõi trạng thái làm mới token
+const refreshTokenPromise: Promise<AccessTokenResponse | null> | null = null; // Biến lưu trữ promise của lần gọi
 
 // const handleRefreshToken = async () => {
 //   // Kiểm tra nếu token đang được làm mới

@@ -10,7 +10,6 @@ import {
   TableProps,
 } from "antd";
 import "@/styles/reset.scss";
-import "react-quill/dist/quill.snow.css";
 import { useAppSelector } from "@/redux/hooks";
 import resumeApiRequest from "@/apiRequests/resume";
 import dayjs from "dayjs";

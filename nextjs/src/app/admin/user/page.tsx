@@ -21,7 +21,7 @@ const UserPage = () => {
   const [dataInit, setDataInit] = useState<IUser | null>(null);
   const [openViewDetail, setOpenViewDetail] = useState<boolean>(false);
 
-  const tableRef = useRef<ActionType>();
+  const tableRef = useRef<ActionType | undefined>(undefined);
 
   const isFetching = useAppSelector((state) => state.user.isFetching);
   const meta = useAppSelector((state) => state.user.meta);

@@ -35,8 +35,7 @@ import {
 } from "@/lib/utils";
 import { ICompanySelect } from "@/components/admin/user/modal.user";
 import { useState, useEffect } from "react";
-// import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
+import TiptapEditor from "@/components/share/TiptapEditor";
 import { CheckSquareOutlined } from "@ant-design/icons";
 import enUS from "antd/lib/locale/en_US";
 import dayjs from "dayjs";
@@ -52,7 +51,7 @@ const ViewUpsertJob = (props: any) => {
 
   const [description, setDescription] = useState<string>("");
   const [salarySelect, setSalarySelect] = useState<number>(1);
-  let params = useSearchParams();
+  const params = useSearchParams();
 
   const id = params?.get("id"); // job id
   const [dataUpdate, setDataUpdate] = useState<IJob | null>(null);
@@ -60,21 +59,6 @@ const ViewUpsertJob = (props: any) => {
   const [initialSalaryEnd, setInitialSalaryEnd] = useState<number>(0);
 
   const [form] = Form.useForm();
-
-  // Sử dụng state để theo dõi việc có thể sử dụng `document` hay không
-  const [canUseDOM, setCanUseDOM] = useState(false);
-
-  // Sử dụng hook useEffect để thiết lập giá trị cho `canUseDOM`
-  useEffect(() => {
-    setCanUseDOM(typeof document !== "undefined");
-  }, []);
-
-  // Chỉ import ReactQuill khi đang chạy trong môi trường trình duyệt
-  let ReactQuill;
-  if (canUseDOM) {
-    ReactQuill = require("react-quill");
-    require("react-quill/dist/quill.snow.css");
-  }
 
   useEffect(() => {
     const init = async () => {
@@ -378,7 +362,7 @@ const ViewUpsertJob = (props: any) => {
                 <ProFormDatePicker
                   label="Ngày bắt đầu"
                   name="startDate"
-                  normalize={(value) => value && dayjs(value, "DD/MM/YYYY")}
+                  normalize={(value: any) => value && dayjs(value, "DD/MM/YYYY")}
                   fieldProps={{
                     format: "DD/MM/YYYY",
                   }}
@@ -392,7 +376,7 @@ const ViewUpsertJob = (props: any) => {
                 <ProFormDatePicker
                   label="Ngày kết thúc"
                   name="endDate"
-                  normalize={(value) => value && dayjs(value, "DD/MM/YYYY")}
+                  normalize={(value: any) => value && dayjs(value, "DD/MM/YYYY")}
                   fieldProps={{
                     format: "DD/MM/YYYY",
                   }}
@@ -487,23 +471,20 @@ const ViewUpsertJob = (props: any) => {
                 />
               </Col>
               <Col span={24}>
-                {canUseDOM && ReactQuill && (
-                  <ProForm.Item
-                    name="description"
-                    label="Miêu tả job"
-                    rules={[
-                      { required: true, message: "Vui lòng nhập miêu tả job!" },
-                    ]}
-                    className={styles["set-height-proFormItem"]}
-                  >
-                    <ReactQuill
-                      className={styles["set-height-quill"]}
-                      theme="snow"
-                      value={description}
-                      onChange={setDescription}
-                    />
-                  </ProForm.Item>
-                )}
+                <ProForm.Item
+                  name="description"
+                  label="Miêu tả job"
+                  rules={[
+                    { required: true, message: "Vui lòng nhập miêu tả job!" },
+                  ]}
+                  className={styles["set-height-proFormItem"]}
+                >
+                  <TiptapEditor
+                    className={styles["set-height-quill"]}
+                    value={description}
+                    onChange={setDescription}
+                  />
+                </ProForm.Item>
               </Col>
             </Row>
             <Divider />

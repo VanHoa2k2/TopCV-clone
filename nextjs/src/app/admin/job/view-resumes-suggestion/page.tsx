@@ -14,7 +14,6 @@ import {
   Tooltip,
 } from "antd";
 import "@/styles/reset.scss";
-import "react-quill/dist/quill.snow.css";
 import { useAppSelector } from "@/redux/hooks";
 import resumeApiRequest from "@/apiRequests/resume";
 import dayjs from "dayjs";
@@ -41,7 +40,7 @@ const fetchResumes = async (url: string, jobId: number) => {
 };
 
 const ViewResumesSuggestion = (props: any) => {
-  let params = useSearchParams();
+  const params = useSearchParams();
 
   const [openModalModalSendManyMail, setOpenModalSendManyMail] =
     useState<boolean>(false);

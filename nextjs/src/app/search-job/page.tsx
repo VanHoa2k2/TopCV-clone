@@ -4,11 +4,11 @@ import SearchJobResult from "./_components/SearchJobResult";
 import SearchJobResultSkeleton from "./_components/SearchJobResultSkeleton";
 
 interface IProps {
-  searchParams: { name: string; location: string };
+  searchParams: Promise<{ name: string; location: string }>;
 }
 
-const SearchJobPage = ({ searchParams }: IProps) => {
-  const { name, location } = searchParams;
+const SearchJobPage = async ({ searchParams }: IProps) => {
+  const { name, location } = await searchParams;
 
   return (
     <div className="bg-[#f3f5f7]">

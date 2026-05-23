@@ -23,19 +23,18 @@ import {
 } from "antd";
 import "@/styles/reset.scss";
 import { isMobile } from "react-device-detect";
-import "react-quill/dist/quill.snow.css";
 import { useEffect, useState } from "react";
 import { ICompany } from "@/types/backend";
 import { v4 as uuidv4 } from "uuid";
 import enUS from "antd/lib/locale/en_US";
 import Image from "next/image";
-import dynamic from "next/dynamic";
+import TiptapEditor from "@/components/share/TiptapEditor";
 import companyApiRequest from "@/apiRequests/company";
 import fileUploadApiRequest from "@/apiRequests/fileUpload";
 import { EMPLOYEE_SIZE_LIST, FIELDS_LIST } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 
 interface IProps {
   openModal: boolean;
@@ -64,7 +63,6 @@ export interface IField {
   id?: number;
   name: string;
 }
-[];
 
 const ModalCompany = (props: IProps) => {
   const router = useRouter();
@@ -555,7 +553,7 @@ const ModalCompany = (props: IProps) => {
                 bordered
               >
                 <Col span={24}>
-                  <ReactQuill theme="snow" value={value} onChange={setValue} />
+                  <TiptapEditor value={value} onChange={setValue} />
                 </Col>
               </ProCard>
             </Row>

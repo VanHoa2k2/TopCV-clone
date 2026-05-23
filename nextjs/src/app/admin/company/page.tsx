@@ -19,7 +19,7 @@ const CompanyPage = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [dataInit, setDataInit] = useState<ICompany | null>(null);
 
-  const tableRef = useRef<ActionType>();
+  const tableRef = useRef<ActionType | undefined>(undefined);
 
   const isFetching = useAppSelector((state) => state?.company?.isFetching);
   const meta = useAppSelector((state) => state?.company?.meta);

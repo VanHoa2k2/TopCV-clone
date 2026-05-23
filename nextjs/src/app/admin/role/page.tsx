@@ -18,7 +18,7 @@ import roleApiRequest from "@/apiRequests/role";
 const RolePage = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const tableRef = useRef<ActionType>();
+  const tableRef = useRef<ActionType | undefined>(undefined);
 
   const isFetching = useAppSelector((state) => state.role.isFetching);
   const meta = useAppSelector((state) => state.role.meta);

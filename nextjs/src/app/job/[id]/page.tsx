@@ -9,11 +9,12 @@ import { Suspense } from "react";
 const callFetchJobById = cache(jobApiRequest.callFetchJobById);
 
 interface IProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-  const { data } = await callFetchJobById(params?.id);
+  const { id } = await params;
+  const { data } = await callFetchJobById(id);
   const url = process.env.NEXT_PUBLIC_URL + "/job/" + data?.id;
   return {
     title: data?.name,
@@ -30,10 +31,11 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   };
 }
 
-const JobDetailPage = ({ params }: IProps) => {
+const JobDetailPage = async ({ params }: IProps) => {
+  const { id } = await params;
   return (
     <Suspense fallback={<SkeletonJobDetail />}>
-      <JobDetailContent id={params.id} />
+      <JobDetailContent id={id} />
     </Suspense>
   );
 };
