@@ -52,7 +52,7 @@ const ModuleApi = (props: IProps) => {
   };
 
   return (
-    <Card size="small" bordered={false}>
+    <Card size="small" variant="borderless">
       <Collapse>
         {listPermissions?.map((item, index) => (
           <Panel

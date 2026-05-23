@@ -13,7 +13,7 @@ import {
   IUser,
 } from "@/types/backend";
 import { Card, Col, Row, Statistic } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import * as echarts from "echarts";
 import Chart from "@/components/client/home/sectionHeader/Chart";
@@ -37,6 +37,7 @@ const Admin = () => {
     candidate: 0,
     hr: 0,
   });
+  const chartRef = useRef<echarts.ECharts | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +52,7 @@ const Admin = () => {
         );
         setResumeTotal(resumes?.data?.length);
         const jobExpired: any = [];
-        jobs?.data?.map((job: IJob) => {
+        jobs?.data?.forEach((job: IJob) => {
           if (dayjs().isAfter(dayjs(job?.endDate))) {
             jobExpired.push(job);
           }
@@ -86,48 +87,51 @@ const Admin = () => {
       });
 
       setUserRoles(rolesCount);
+
+      // Khởi tạo biểu đồ ECharts sau khi có data
+      const chartDom = document.getElementById("userChart");
+      if (chartDom && !chartRef.current) {
+        chartRef.current = echarts.init(chartDom);
+      }
+      if (chartRef.current) {
+        chartRef.current.setOption(getOption(rolesCount));
+      }
     };
 
     fetchData();
 
-    // Khởi tạo biểu đồ ECharts
-    const chartDom = document.getElementById("userChart");
-    const myChart = echarts.init(chartDom);
-    myChart.setOption(getOption());
-
     return () => {
-      myChart.dispose();
+      if (chartRef.current) {
+        chartRef.current.dispose();
+        chartRef.current = null;
+      }
     };
   }, []);
 
-  // Thêm useEffect để cập nhật biểu đồ khi userRoles thay đổi
+  // Cập nhật biểu đồ khi userRoles thay đổi
   useEffect(() => {
-    const chartDom = document.getElementById("userChart");
-    const myChart = echarts.init(chartDom);
-    myChart.setOption(getOption());
-
-    return () => {
-      myChart.dispose();
-    };
-  }, [userRoles]); // Theo dõi userRoles
+    if (chartRef.current) {
+      chartRef.current.setOption(getOption(userRoles));
+    }
+  }, [userRoles]);
 
   const formatter = (value: number | string) => {
     return <CountUp end={Number(value)} separator="," />;
   };
 
-  const getOption = () => {
+  const getOption = (rolesData: { [key: string]: number } = userRoles) => {
     const roles = [
       {
         name: "Admin",
-        value: userRoles.admin,
+        value: rolesData.admin,
         itemStyle: { color: "#4A90E2" },
       },
       {
         name: "Ứng viên",
-        value: userRoles.candidate,
+        value: rolesData.candidate,
         itemStyle: { color: "#50E3C2" },
       },
-      { name: "HR", value: userRoles.hr, itemStyle: { color: "#F5A623" } },
+      { name: "HR", value: rolesData.hr, itemStyle: { color: "#F5A623" } },
     ].filter((role) => role.value > 0);
 
     return {
@@ -154,16 +158,13 @@ const Admin = () => {
             },
           },
           itemStyle: {
-            // Sử dụng màu sắc từ dữ liệu
-            normal: {
-              color: (params: any) => {
-                return roles[params.dataIndex].itemStyle.color;
-              },
+            color: (params: any) => {
+              return roles[params.dataIndex]?.itemStyle?.color || "#ccc";
             },
           },
         },
       ],
-      backgroundColor: "#f9f9f9", // Thay đổi màu nền
+      backgroundColor: "#f9f9f9",
     };
   };
 
@@ -172,17 +173,17 @@ const Admin = () => {
       {isHrRole ? (
         <>
           <Col span={24} md={8}>
-            <Card title="Tổng tin tuyển dụng" bordered={false}>
+            <Card title="Tổng tin tuyển dụng" variant="borderless">
               <Statistic value={jobTotal} formatter={formatter} />
             </Card>
           </Col>
           <Col span={24} md={8}>
-            <Card title="Tin tuyển dụng hết hạn" bordered={false}>
+            <Card title="Tin tuyển dụng hết hạn" variant="borderless">
               <Statistic value={jobExpiredTotal.length} formatter={formatter} />
             </Card>
           </Col>
           <Col span={24} md={8}>
-            <Card title="Ứng viên ứng tuyển" bordered={false}>
+            <Card title="Ứng viên ứng tuyển" variant="borderless">
               <Statistic value={resumeTotal} formatter={formatter} />
             </Card>
           </Col>
@@ -190,17 +191,17 @@ const Admin = () => {
       ) : (
         <>
           <Col span={24} md={8}>
-            <Card title="Tổng người dùng" bordered={false}>
+            <Card title="Tổng người dùng" variant="borderless">
               <Statistic value={userTotal} formatter={formatter} />
             </Card>
           </Col>
           <Col span={24} md={8}>
-            <Card title="Tổng việc làm" bordered={false}>
+            <Card title="Tổng việc làm" variant="borderless">
               <Statistic value={jobTotal} formatter={formatter} />
             </Card>
           </Col>
           <Col span={24} md={8}>
-            <Card title="Tổng công ty" bordered={false}>
+            <Card title="Tổng công ty" variant="borderless">
               <Statistic value={companyTotal} formatter={formatter} />
             </Card>
           </Col>

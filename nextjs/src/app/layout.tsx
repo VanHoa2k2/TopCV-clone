@@ -6,6 +6,7 @@ import { Providers } from "@/redux/provider";
 import FetchAccount from "@/components/FetchAccount";
 import RefreshToken from "@/components/refresh-token";
 import AppContent from "@/components/app.content";
+import AntdCompatSuppressor from "@/components/share/AntdCompatSuppressor";
 import { baseOpenGraph } from "@/lib/shared-metadata";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <FetchAccount />
+          <AntdCompatSuppressor />
           <AntdRegistry>
             <AppContent>{children}</AppContent>
           </AntdRegistry>
