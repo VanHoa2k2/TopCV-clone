@@ -181,7 +181,7 @@ const NavbarAdmin = (props: NavbarAdminProps) => {
 
       setMenuItems(full);
     } else {
-      console.error("No permissions found for user.");
+      setMenuItems([]);
     }
   }, [permissions]);
   useEffect(() => {
