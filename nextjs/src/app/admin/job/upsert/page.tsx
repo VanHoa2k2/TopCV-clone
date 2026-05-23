@@ -277,7 +277,7 @@ const ViewUpsertJob = (props: any) => {
                   allowClear
                   mode="multiple"
                   fieldProps={{
-                    showArrow: false,
+                    suffixIcon: null,
                   }}
                 />
               </Col>
@@ -293,7 +293,7 @@ const ViewUpsertJob = (props: any) => {
                   allowClear
                   mode="multiple"
                   fieldProps={{
-                    showArrow: false,
+                    suffixIcon: null,
                   }}
                 />
               </Col>

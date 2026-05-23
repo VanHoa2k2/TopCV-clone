@@ -463,7 +463,7 @@ const ModalCompany = (props: IProps) => {
                   ]}
                   allowClear
                   fieldProps={{
-                    showArrow: false,
+                    suffixIcon: null,
                   }}
                 />
               </Col>
