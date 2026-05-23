@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import TopCV from "@/assets/images/topcv_white.webp";
+import Logo from "@/assets/images/logo_website.png";
 import { usePathname } from "next/navigation";
 
 const BgAuth = () => {
@@ -19,7 +19,7 @@ const BgAuth = () => {
       ) : (
         <div className="absolute left-[35px] mt-[-32px] max-w-[300px] top-[50%] translate-y-[-50%]">
           <Link href="/">
-            <Image src={TopCV} alt="Icon TopCV" width={160} height={68} />
+            <Image src={Logo} alt="Logo" width={160} height={68} />
           </Link>
           <h1 className="text-[40px] leading-[60px] text-[#fff] font-bold mt-6">
             Tiếp lợi thế <br />
