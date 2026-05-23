@@ -45,6 +45,7 @@ const Footer = () => {
                 width={145}
                 height={40}
                 className="object-contain"
+                style={{ width: "auto", height: "auto" }}
               />
 
               <Link
@@ -57,6 +58,7 @@ const Footer = () => {
                   width={40}
                   height={40}
                   className="object-contain"
+                  style={{ width: "auto", height: "auto" }}
                 />
               </Link>
               <Link
@@ -69,6 +71,7 @@ const Footer = () => {
                   width={95}
                   height={36}
                   className="object-contain"
+                  style={{ width: "auto", height: "auto" }}
                 />
               </Link>
             </div>
@@ -102,6 +105,7 @@ const Footer = () => {
                   width={150}
                   height={44}
                   className="object-contain"
+                  style={{ width: "auto", height: "auto" }}
                 />
                 <Image
                   src={GoogPlay}
@@ -109,6 +113,7 @@ const Footer = () => {
                   width={150}
                   height={44}
                   className="object-contain"
+                  style={{ width: "auto", height: "auto" }}
                 />
               </div>
             </div>
@@ -124,6 +129,7 @@ const Footer = () => {
                     width={32}
                     height={32}
                     className="object-contain"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </Link>
                 <Link href="https://www.youtube.com/c/TopCVpro" target="_blank">
@@ -133,6 +139,7 @@ const Footer = () => {
                     width={32}
                     height={32}
                     className="object-contain"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </Link>
                 <Link
@@ -145,6 +152,7 @@ const Footer = () => {
                     width={32}
                     height={32}
                     className="object-contain"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </Link>
                 <Link href="https://www.tiktok.com/@topcv" target="_blank">
@@ -154,6 +162,7 @@ const Footer = () => {
                     width={32}
                     height={32}
                     className="object-contain"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </Link>
               </div>
