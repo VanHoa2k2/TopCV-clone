@@ -146,9 +146,9 @@ const HeaderSearchJobPage = (props: IProps) => {
           title={filterByLocationMenu}
           arrow={false}
           trigger="click"
-          visible={isTooltipVisibleLocation}
-          onVisibleChange={(visible) => setIsTooltipVisibleLocation(visible)}
-          overlayStyle={{ marginTop: "40px", padding: "10px 0" }}
+          open={isTooltipVisibleLocation}
+          onOpenChange={(open) => setIsTooltipVisibleLocation(open)}
+          styles={{ root: { marginTop: "40px", padding: "10px 0" } }}
           color="#fff"
           getPopupContainer={(triggerNode: any) => triggerNode.parentNode}
         >
@@ -174,9 +174,9 @@ const HeaderSearchJobPage = (props: IProps) => {
           title={filterByFieldsMenu}
           arrow={false}
           trigger="click"
-          visible={isTooltipVisibleField}
-          onVisibleChange={(visible) => setIsTooltipVisibleField(visible)}
-          overlayStyle={{ marginTop: "40px", padding: "10px 0" }}
+          open={isTooltipVisibleField}
+          onOpenChange={(open) => setIsTooltipVisibleField(open)}
+          styles={{ root: { marginTop: "40px", padding: "10px 0" } }}
           color="#fff"
           getPopupContainer={(triggerNode: any) => triggerNode.parentNode}
         >

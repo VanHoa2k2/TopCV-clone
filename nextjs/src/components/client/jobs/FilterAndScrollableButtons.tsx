@@ -38,9 +38,9 @@ const FilterAndScrollableButtons: React.FC<FilterAndScrollableButtonsProps> = ({
           title={filterMenu}
           arrow={false}
           trigger="click"
-          visible={isTooltipVisible}
-          onVisibleChange={(visible) => setIsTooltipVisible(visible)}
-          overlayStyle={{ marginTop: "40px", padding: "10px 0" }}
+          open={isTooltipVisible}
+          onOpenChange={(open) => setIsTooltipVisible(open)}
+          styles={{ root: { marginTop: "40px", padding: "10px 0" } }}
           color="#fff"
           getPopupContainer={(triggerNode: any) => triggerNode.parentNode}
         >

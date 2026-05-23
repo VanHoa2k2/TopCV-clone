@@ -290,7 +290,7 @@ const HeaderContent = () => {
                   arrow={false}
                   trigger="click"
                   color="#fff"
-                  overlayStyle={{ maxWidth: "400px" }}
+                  styles={{ root: { maxWidth: "400px" } }}
                   open={isOpenNotifyTooltip}
                   onOpenChange={() => setIsOpenNotifyTooltip(false)}
                 >
@@ -337,7 +337,7 @@ const HeaderContent = () => {
                   title={menuAccount}
                   arrow={false}
                   color="#fff"
-                  overlayStyle={{ maxWidth: "360px" }}
+                  styles={{ root: { maxWidth: "360px" } }}
                   getPopupContainer={(triggerNode: any) =>
                     triggerNode.parentNode
                   }
@@ -376,7 +376,7 @@ const HeaderContent = () => {
                   arrow={false}
                   trigger="click"
                   color="#fff"
-                  overlayStyle={{ maxWidth: "400px" }}
+                  styles={{ root: { maxWidth: "400px" } }}
                   open={isOpenNotifyTooltip}
                   onOpenChange={() => setIsOpenNotifyTooltip(false)}
                 >

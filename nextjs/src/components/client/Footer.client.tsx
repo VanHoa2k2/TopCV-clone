@@ -34,6 +34,7 @@ const Footer = () => {
                 width={327}
                 height={128}
                 className="object-contain mb-4"
+                style={{ width: "auto", height: "auto" }}
               />
             </Link>
 
