@@ -9,6 +9,12 @@ const nextConfig = {
         pathname: "/**",
       },
       {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8088",
+        pathname: "/**",
+      },
+      {
         protocol: "https",
         hostname: "nestjs-topcv-clone.onrender.com",
         port: "",
