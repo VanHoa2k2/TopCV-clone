@@ -74,7 +74,7 @@ const ModalSendMail = (props: IProps) => {
             handleReset();
           },
           afterClose: () => handleReset(),
-          destroyOnClose: true,
+          destroyOnHidden: true,
           width: isMobile ? "100%" : 900,
           keyboard: false,
           maskClosable: false,
