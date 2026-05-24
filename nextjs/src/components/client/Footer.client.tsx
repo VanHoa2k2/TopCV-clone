@@ -34,7 +34,6 @@ const Footer = () => {
                 width={327}
                 height={128}
                 className="object-contain mb-4"
-                style={{ width: "auto", height: "auto" }}
               />
             </Link>
 
@@ -45,7 +44,6 @@ const Footer = () => {
                 width={145}
                 height={40}
                 className="object-contain"
-                style={{ width: "auto", height: "auto" }}
               />
 
               <Link
@@ -58,7 +56,6 @@ const Footer = () => {
                   width={40}
                   height={40}
                   className="object-contain"
-                  style={{ width: "auto", height: "auto" }}
                 />
               </Link>
               <Link
@@ -71,7 +68,6 @@ const Footer = () => {
                   width={95}
                   height={36}
                   className="object-contain"
-                  style={{ width: "auto", height: "auto" }}
                 />
               </Link>
             </div>

@@ -27,7 +27,7 @@ export function middleware(request: NextRequest) {
   if (authHrPaths.some((path) => pathname.startsWith(path)) && access_token) {
     return NextResponse.redirect(new URL("/admin", request.url));
   }
-  // return NextResponse.next();
+  return NextResponse.next();
 }
 
 // See "Matching Paths" below to learn more
