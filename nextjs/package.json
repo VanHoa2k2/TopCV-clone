@@ -1,6 +1,13 @@
 {
   "name": "nextjs",
   "version": "0.1.0",
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
